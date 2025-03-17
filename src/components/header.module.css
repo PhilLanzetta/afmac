@@ -1,0 +1,38 @@
+header {
+  font-family: "Sohne", sans-serif;
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: clamp(calc(10px + 1rem), 3vw, 500px);
+  width: 100%;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.headerLogo {
+  width: clamp(150px, 18%, 500px);
+}
+
+.menuLink,
+.activeLink {
+  position: relative;
+}
+
+.menuLink:hover::after,
+.activeLink::after {
+  content: "";
+  display: block;
+  width: calc(1rem - 5px);
+  height: calc(1rem - 5px);
+  background: currentColor;
+  border-radius: 100%;
+  position: absolute;
+  left: 100%;
+  top: 50%;
+  transform: translate(50%, -50%);
+}

@@ -1,0 +1,115 @@
+.collectiveMain {
+  min-height: 100vh;
+  background: #000;
+  padding: 180px clamp(calc(10px + 1rem), 3vw, 500px);
+  color: #fff;
+}
+
+.heading {
+  font-family: "Druk", sans-serif;
+  text-transform: uppercase;
+  text-align: center;
+  font-size: calc(1rem + 3vw);
+  letter-spacing: 1px;
+}
+
+.collectiveHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 40px 0;
+  margin-bottom: 80px;
+  position: relative;
+}
+
+.collectiveHeader a {
+  position: relative;
+  border-bottom: 1px solid #fff;
+  z-index: 5;
+}
+
+.collectiveHeader a:last-of-type {
+  border-bottom: none;
+}
+
+.headerAnchor {
+  font-family: "Sohne Kraftig", sans-serif;
+  padding: 10px;
+  font-size: calc(1rem + 1.5vw);
+  text-transform: uppercase;
+}
+
+.heroImage {
+  position: absolute;
+  top: 50%;
+  left: 60%;
+  transform: translateY(-50%);
+  width: 30%;
+  z-index: 1;
+  border-radius: 5%;
+  overflow: hidden;
+}
+
+.collectiveContainer > div {
+  padding: 40px 0;
+  border-bottom: 1px solid #fff;
+  margin-bottom: 80px;
+}
+
+.collectiveContainer > div:last-of-type {
+  border-bottom: none;
+}
+
+.collectiveMember {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  gap: 30px;
+}
+
+.memberInfo {
+  font-family: "Sohne Kraftig", sans-serif;
+  width: 75%;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.memberHeadshot {
+  width: 25%;
+  border-radius: 5%;
+}
+
+.memberName {
+  text-transform: uppercase;
+}
+
+.memberSocial {
+  display: flex;
+  flex-direction: column;
+}
+
+.participantContainer {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 20px;
+  row-gap: 40px;
+  margin-top: 40px;
+}
+
+.participant {
+ display: flex;
+ flex-direction: column;
+}
+
+.participantName {
+ text-transform: uppercase;
+ text-align: center;
+ padding: 10px 0;
+}
+
+.participantSocial {
+ margin-top: 20px;
+ display: flex;
+ flex-direction: column;
+}

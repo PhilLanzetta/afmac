@@ -1,0 +1,24 @@
+.loaderContainer {
+  height: 100vh;
+  width: 100vw;
+  display: grid;
+  place-items: center;
+  background: #000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 200;
+}
+
+.spinner {
+  width: 20vw;
+  animation: spin 6s linear infinite;
+}
+
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+    transform-origin: center;
+  }
+}
