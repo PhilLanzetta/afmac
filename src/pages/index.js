@@ -8,10 +8,7 @@ import * as styles from "../components/index.module.css"
 import VideoPlayer from "../components/videoPlayer"
 
 const Index = ({ location, data }) => {
-  const [loading, setLoading] = useState(() => {
-    const intro = sessionStorage.getItem("intro")
-    return intro === "true" ? false : true
-  })
+  const [loading, setLoading] = useState(true)
   const [activeVideo, setActiveVideo] = useState(null)
   const { homeVideo, workshopDescription, workshopTable } =
     data.contentfulHomePage
@@ -24,6 +21,12 @@ const Index = ({ location, data }) => {
       body.style.position = ""
     }
   }, [loading])
+
+  useEffect(() => {
+    if (sessionStorage.getItem("intro")) {
+      setLoading(false)
+    }
+  }, [])
 
   useEffect(() => {
     const timer = setTimeout(() => {
