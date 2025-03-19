@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="20.062" height="20.203" viewBox="0 0 20.062 20.203">
+  <g id="Group_76" data-name="Group 76" transform="translate(-1605.903 -230.644)">
+    <g id="Group_72" data-name="Group 72" transform="translate(1605.903 241.532)">
+      <rect id="Rectangle_8" data-name="Rectangle 8" width="1.239" height="5.37" transform="translate(8.267 0) rotate(43)" fill="#fff"/>
+      <g id="Polygon_1" data-name="Polygon 1" transform="translate(3.928 9.315) rotate(-137)" fill="#fff">
+        <path d="M2.685,0,5.37,5.37H0Z" stroke="none"/>
+        <path d="M 2.685189723968506 -9.5367431640625e-07 L 5.37037992477417 5.370379447937012 L -4.76837158203125e-07 5.370379447937012 L 2.685189723968506 -9.5367431640625e-07 Z" stroke="none" fill="#fff"/>
+      </g>
+    </g>
+    <g id="Group_73" data-name="Group 73" transform="translate(1616.792 241.532)">
+      <rect id="Rectangle_8-2" data-name="Rectangle 8" width="1.239" height="5.37" transform="translate(4.569 3.928) rotate(137)" fill="#fff"/>
+      <g id="Polygon_1-2" data-name="Polygon 1" transform="translate(9.173 5.652) rotate(137)" fill="#fff">
+        <path d="M2.685,0,5.37,5.37H0Z" stroke="none"/>
+        <path d="M 2.685189723968506 -9.5367431640625e-07 L 5.37037992477417 5.370379447937012 L -4.76837158203125e-07 5.370379447937012 L 2.685189723968506 -9.5367431640625e-07 Z" stroke="none" fill="#fff"/>
+      </g>
+    </g>
+    <g id="Group_74" data-name="Group 74" transform="translate(1605.903 230.644)">
+      <rect id="Rectangle_8-3" data-name="Rectangle 8" width="1.239" height="5.37" transform="translate(4.604 5.387) rotate(-43)" fill="#fff"/>
+      <g id="Polygon_1-3" data-name="Polygon 1" transform="translate(0 3.663) rotate(-43)" fill="#fff">
+        <path d="M2.685,0,5.37,5.37H0Z" stroke="none"/>
+        <path d="M 2.685189723968506 -9.5367431640625e-07 L 5.37037992477417 5.370379447937012 L -4.76837158203125e-07 5.370379447937012 L 2.685189723968506 -9.5367431640625e-07 Z" stroke="none" fill="#fff"/>
+      </g>
+    </g>
+    <g id="Group_75" data-name="Group 75" transform="translate(1616.792 230.644)">
+      <rect id="Rectangle_8-4" data-name="Rectangle 8" width="1.239" height="5.37" transform="translate(0.906 9.315) rotate(-137)" fill="#fff"/>
+      <g id="Polygon_1-4" data-name="Polygon 1" transform="translate(5.245 0) rotate(43)" fill="#fff">
+        <path d="M2.685,0,5.37,5.37H0Z" stroke="none"/>
+        <path d="M 2.685189723968506 -9.5367431640625e-07 L 5.37037992477417 5.370379447937012 L -4.76837158203125e-07 5.370379447937012 L 2.685189723968506 -9.5367431640625e-07 Z" stroke="none" fill="#fff"/>
+      </g>
+    </g>
+  </g>
+</svg>

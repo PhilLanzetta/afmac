@@ -41,6 +41,15 @@ a {
   color: inherit;
 }
 
+button {
+  background: none;
+  border: none;
+  color: inherit;
+  font-size: inherit;
+  font-family: inherit;
+  transition: all 400ms;
+}
+
 html {
   font-size: 20px;
 }

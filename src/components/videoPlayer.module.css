@@ -1,0 +1,70 @@
+.videoPlayerContainer {
+  display: block;
+  width: 100%;
+}
+
+.videoPlayer {
+  position: relative;
+}
+
+.videoPlayerVideo,
+.overlay {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+
+.overlay {
+  z-index: 10000;
+}
+
+.videoPlayerVideo iframe {
+  height: 100%;
+  width: 100%;
+}
+
+.coverImageContainer {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  overflow: hidden;
+}
+
+.coverImage {
+  min-width: 100%;
+  min-height: 100%;
+}
+
+.playOverlay {
+  position: absolute;
+  z-index: 20;
+  height: 40px;
+  width: 40px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.overlayPlayBtn {
+  height: 100%;
+  width: 100%;
+}
+
+.fullScreenBtn {
+  position: absolute;
+  z-index: 15000;
+  top: 30px;
+  right: 30px;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 700px) {
+  .videoPlayerContainer {
+    margin: 0 10px;
+  }
+}

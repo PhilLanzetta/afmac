@@ -17,10 +17,11 @@
  font-size: calc(1rem + 3vw);
  text-transform: uppercase;
  letter-spacing: 1px;
+ line-height: 0.9;
 }
 
 .footerLinkContainer {
- font-family: "Neue Haas", sans-serif;
+ font-family: "Sohne", sans-serif;
  display: flex;
  flex-grow: 1;
  gap: 10%;

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="10.839" height="11.326" viewBox="0 0 10.839 11.326">
+  <g id="Group_59" data-name="Group 59" transform="translate(0 0.165)">
+    <g id="Polygon_3" data-name="Polygon 3" transform="translate(5.58 0) rotate(90)" fill="#fff">
+      <path d="M 6.332329273223877 3.580376386642456 L 4.828417301177979 3.580376386642456 L 5.580373287200928 2.828418970108032 L 6.332329273223877 3.580376386642456 Z" stroke="none"/>
+      <path d="M 5.580373287200928 -3.814697265625e-06 L 11.16074371337891 5.580376625061035 L 2.86102294921875e-06 5.580376625061035 L 5.580373287200928 -3.814697265625e-06 Z" stroke="none" fill="#fff"/>
+    </g>
+    <g id="Polygon_4" data-name="Polygon 4" transform="translate(10.839 -0.165) rotate(90)" fill="#fff">
+      <path d="M 6.453527450561523 4 L 4.546472549438477 4 L 5.5 2.959788084030151 L 6.453527450561523 4 Z" stroke="none"/>
+      <path d="M 5.5 0 L 11 6 L 0 6 L 5.5 0 Z" stroke="none" fill="#fff"/>
+    </g>
+  </g>
+</svg>

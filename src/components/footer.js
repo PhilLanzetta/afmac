@@ -12,11 +12,8 @@ const Footer = () => {
         </Link>
         <div className={styles.footerLinkContainer}>
           <div className={styles.footerColumn}>
-            <Link to="/contact" className={styles.footerUpper}>
+            <Link to="/about" className={styles.footerUpper}>
               About
-            </Link>
-            <Link to="/search" className={styles.footerUpper}>
-              Search
             </Link>
           </div>
           <div className={styles.footerColumn}>
@@ -32,32 +29,14 @@ const Footer = () => {
             >
               Instagram
             </a>
-            <a
-              href="https://youtube.com/handle"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Youtube
-            </a>
-            <a href="https://vimeo.com/handle" target="_blank" rel="noreferrer">
-              Vimeo
-            </a>
           </div>
           <div className={styles.footerColumn}>
-            <p className={styles.footerUpper}>BMW Group</p>
+            <p className={styles.footerUpper}>Supported by BMW Culture</p>
             <a
-              href="https://google.com"
+              href="https://bmwgroup.com/culture"
               target="_blank"
               rel="noreferrer"
               className={styles.footerBelowMargin}
-            >
-              Visit Website
-            </a>
-            <p>BMW Art Car</p>
-            <a
-              href="https://google.com"
-              target="_blank"
-              rel="noreferrer"
             >
               Visit Website
             </a>
