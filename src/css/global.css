@@ -39,6 +39,12 @@
 a {
   text-decoration: none;
   color: inherit;
+  transition: all 400ms;
+}
+
+a:hover {
+  opacity: 0.5;
+  transition: all 400ms;
 }
 
 button {
@@ -52,6 +58,26 @@ button {
 
 html {
   font-size: 20px;
+}
+
+body {
+  width: 100vw;
+  overflow-x: hidden;
+}
+
+p {
+  margin-bottom: 20px;
+}
+
+.heading {
+  font-family: "Druk", sans-serif;
+  text-transform: uppercase;
+  font-size: calc(1rem + 3vw);
+  letter-spacing: 1px;
+}
+
+.center {
+  text-align: center;
 }
 
 @media screen and (max-width: 1100px) {

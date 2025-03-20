@@ -42,7 +42,11 @@ const Index = ({ location, data }) => {
     <Layout location={location}>
       <AnimatePresence>
         {loading && (
-          <motion.div intial={{ opacity: 1 }} exit={{ opacity: 0 }}>
+          <motion.div
+            intial={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            key="loader"
+          >
             <Loader></Loader>
           </motion.div>
         )}
@@ -55,6 +59,40 @@ const Index = ({ location, data }) => {
             video={homeVideo}
             videoId={homeVideo.id}
           ></VideoPlayer>
+        </div>
+        <div className={styles.workshopCard}>
+          <h2 className="heading">Workshops</h2>
+          <div className={styles.workshopInfoContainer}>
+            <div>
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: workshopDescription.childMarkdownRemark.html,
+                }}
+              ></div>
+              <Link to="/journal" className={styles.readLink}>
+                Read the Journal &rarr;
+              </Link>
+            </div>
+            <div>
+              <div className={styles.table}>
+                {workshopTable.map((item, index) => (
+                  <div key={index} className={styles.row}>
+                    <p>{item.chapter}</p>
+                    <p>{item.location}</p>
+                    <p className={styles.date}>
+                      {new Date(item.date).toLocaleDateString("en-US", {
+                        month: "long",
+                        year: "numeric",
+                      })}
+                    </p>
+                  </div>
+                ))}
+              </div>
+              <div className={styles.emailSignUp}>
+                <p className={styles.emailHeading}>Join the Journey</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </Layout>

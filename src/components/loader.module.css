@@ -12,9 +12,15 @@
 
 .spinner {
   width: 20vw;
-  animation: spin 6s linear infinite;
+  opacity: 0;
+  animation: spin 6s linear infinite, fadeOn 100ms 400ms forwards;
 }
 
+@keyframes fadeOn {
+  100% {
+    opacity: 1;
+  }
+}
 
 @keyframes spin {
   100% {

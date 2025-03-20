@@ -2,11 +2,3 @@
   min-height: 100vh;
   padding: 180px clamp(calc(10px + 1rem), 3vw, 500px);
 }
-
-.heading {
-  font-family: "Druk", sans-serif;
-  text-transform: uppercase;
-  text-align: center;
-  font-size: calc(1rem + 3vw);
-  letter-spacing: 1px;
-}

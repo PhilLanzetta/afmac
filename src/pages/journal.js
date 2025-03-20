@@ -4,7 +4,7 @@ import * as styles from '../components/journal.module.css'
 
 const Journal = ({location}) => {
   return (
-    <Layout location={location}><div className={styles.journalMain}><h1 className={styles.heading}>Journal</h1></div></Layout>
+    <Layout location={location}><div className={styles.journalMain}><h1 className="heading center">Journal</h1></div></Layout>
   )
 }
 

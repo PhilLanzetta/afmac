@@ -1,42 +1,59 @@
 .footer {
- background: #000;
- padding: clamp(calc(10px + 1rem), 3vw, 500px);
- color: #fff;
+  background: #000;
+  padding: clamp(calc(10px + 1rem), 3vw, 500px);
+  color: #fff;
+}
+
+.footer a {
+  transition: all 400ms;
+}
+
+.footer p {
+  margin-bottom: 0;
+}
+
+.footer a:hover {
+  opacity: 0.5;
+  transition: all 400ms;
 }
 
 .footerContainer {
- border: 1px solid #fff;
- border-radius: 20px;
- padding: 40px;
- display: flex;
- justify-content: space-between;
+  border: 1px solid #fff;
+  border-radius: 20px;
+  padding: 40px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .footerLogo {
- font-family: "Druk", sans-serif;
- font-size: calc(1rem + 3vw);
- text-transform: uppercase;
- letter-spacing: 1px;
- line-height: 0.9;
+  font-family: "Druk", sans-serif;
+  font-size: calc(1rem + 3vw);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  line-height: 0.9;
+}
+
+a.footerLogo:hover {
+  opacity: 1;
 }
 
 .footerLinkContainer {
- font-family: "Sohne", sans-serif;
- display: flex;
- flex-grow: 1;
- gap: 10%;
- justify-content: flex-end;
+  font-family: "Sohne", sans-serif;
+  display: flex;
+  flex-grow: 1;
+  gap: 10%;
+  justify-content: flex-end;
 }
 
 .footerColumn {
- display: flex;
- flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .footerUpper {
- text-transform: uppercase;
+  text-transform: uppercase;
 }
 
 .footerBelowMargin {
- margin-bottom: 20px;
+  margin-bottom: 20px;
 }

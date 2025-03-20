@@ -11,3 +11,58 @@
   border-radius: 60px;
   overflow: hidden;
 }
+
+.workshopCard {
+  background: #fff;
+  color: #000;
+  padding: 40px;
+  border-radius: 20px;
+  margin-top: 100px;
+}
+
+.workshopInfoContainer {
+  display: flex;
+  margin-top: 40px;
+  gap: 20px;
+  font-family: "Sohne Kraftig", sans-serif;
+}
+
+.workshopInfoContainer > div {
+  width: 50%;
+}
+
+.readLink {
+  margin-top: 80px;
+  display: block;
+  text-transform: uppercase;
+}
+
+.table > div {
+  border-top: 1px solid #000;
+}
+
+.table > div:last-of-type {
+  border-bottom: 1px solid #000;
+}
+
+.row {
+  padding: 10px 0;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+}
+
+.row p {
+  margin-bottom: 0;
+}
+
+.date {
+  text-align: right;
+}
+
+.emailHeading {
+  text-transform: uppercase;
+}
+
+.emailSignUp {
+  margin-top: 40px;
+}

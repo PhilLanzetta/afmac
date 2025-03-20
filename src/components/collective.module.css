@@ -5,14 +5,6 @@
   color: #fff;
 }
 
-.heading {
-  font-family: "Druk", sans-serif;
-  text-transform: uppercase;
-  text-align: center;
-  font-size: calc(1rem + 3vw);
-  letter-spacing: 1px;
-}
-
 .collectiveHeader {
   display: flex;
   flex-direction: column;
