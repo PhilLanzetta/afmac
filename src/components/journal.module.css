@@ -2,3 +2,45 @@
   min-height: 100vh;
   padding: 180px clamp(calc(10px + 1rem), 3vw, 500px);
 }
+
+.tagContainer {
+  margin-top: 60px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.tagButton {
+  font-family: "Sohne Kraftig", sans-serif;
+  font-size: calc(1rem * 0.8);
+  cursor: pointer;
+  padding: 5px 15px;
+  border: 1px solid #000;
+  border-radius: 40px;
+  transition: all 400ms;
+}
+
+.tagButton:hover {
+  background: #838383;
+  color: #fff;
+  border: 1px solid #838383;
+  transition: all 400ms;
+}
+
+.workshopHighlight {
+  font-family: "Sohne Kraftig", sans-serif;
+  display: flex;
+  gap: 20px;
+  margin: 40px 0;
+}
+
+.highlightImage {
+  width: 50%;
+}
+
+.highlightText {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  width: 50%;
+}

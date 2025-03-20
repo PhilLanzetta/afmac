@@ -89,7 +89,7 @@ const Collective = ({ location, data }) => {
             </div>
           ))}
         </div>
-        <h2 className={styles.heading}>Workshop Participants</h2>
+        <h2 className="heading center">Workshop Participants</h2>
         <div className={styles.participantContainer}>
           {workshopParticipants.map((member, index) => (
             <div key={index} className={styles.participant}>

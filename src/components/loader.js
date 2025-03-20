@@ -1,8 +1,7 @@
-import React from 'react'
-import * as styles from './loader.module.css'
+import React from "react"
+import * as styles from "./loader.module.css"
 
 const Loader = () => {
- 
   return (
     <div className={styles.loaderContainer}>
       <svg
@@ -14,7 +13,6 @@ const Loader = () => {
           id="Group_535"
           data-name="Group 535"
           transform="translate(0 180.931)"
-          className={styles.outerRing}
         >
           <g
             id="Group_166"
@@ -957,7 +955,6 @@ const Loader = () => {
           id="Group_534"
           data-name="Group 534"
           transform="translate(0 180.931)"
-          className={styles.thirdRing}
         >
           <g
             id="Group_238"
@@ -1900,7 +1897,6 @@ const Loader = () => {
           id="Group_533"
           data-name="Group 533"
           transform="translate(0 180.931)"
-          className={styles.secondRing}
         >
           <g
             id="Group_310"
@@ -2843,7 +2839,6 @@ const Loader = () => {
           id="Group_532"
           data-name="Group 532"
           transform="translate(0 180.931)"
-          className={styles.innerRing}
         >
           <g
             id="Group_382"
