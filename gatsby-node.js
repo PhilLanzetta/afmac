@@ -7,12 +7,30 @@
 /**
  * @type {import('gatsby').GatsbyNode['createPages']}
  */
-exports.createPages = async ({ actions }) => {
+exports.createPages = async ({ actions, graphql }) => {
   const { createPage } = actions
-  createPage({
-    path: "/using-dsg",
-    component: require.resolve("./src/templates/using-dsg.js"),
-    context: {},
-    defer: true,
+
+  const result = await graphql(`
+    query GetData {
+      allContentfulWorkshopEntry {
+        edges {
+          node {
+            slug
+          }
+        }
+      }
+    }
+  `)
+
+  const workshops = result.data.allContentfulWorkshopEntry.edges
+
+  workshops.forEach(({ node }) => {
+    const workshopSlug = node.slug
+    createPage({
+      path: `/journal/${workshopSlug}`,
+      component: require.resolve("./src/templates/workshop-template.js"),
+      context: { slug: workshopSlug },
+      defer: true,
+    })
   })
 }
