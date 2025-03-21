@@ -9,3 +9,30 @@
  margin-bottom: 80px;
 }
 
+.headerImage {
+ margin-top: 20px;
+}
+
+.textModule {
+ margin-bottom: 80px;
+}
+
+.textModule h1, .textModule h2, .textModule h3 {
+ font-weight: normal;
+ font-size: calc(1rem + 2.5vw);
+}
+
+.imageModule {
+ width: 120%;
+ margin: 80px -10%;
+}
+
+.relatedContainer {
+  padding: 80px clamp(calc(10px + 1rem), 3vw, 500px);
+  font-family: 'Sohne Kraftig', sans-serif;
+}
+
+.related {
+ font-weight: normal;
+ font-size: calc(1rem + 1vw);
+}

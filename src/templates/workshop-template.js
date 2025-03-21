@@ -1,10 +1,12 @@
-import React from "react"
+import React, { useState } from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import * as styles from "../components/journalEntry.module.css"
 import { GatsbyImage } from "gatsby-plugin-image"
+import VideoPlayer from "../components/videoPlayer"
 
 const Workshop = ({ location, data }) => {
+  const [activeVideo, setActiveVideo] = useState(null)
   const {
     title,
     workshopLocation,
@@ -22,6 +24,7 @@ const Workshop = ({ location, data }) => {
         <GatsbyImage
           image={tileImage.gatsbyImageData}
           alt={tileImage.description}
+          className={styles.headerImage}
         ></GatsbyImage>
         <p className={`center ${styles.date}`}>
           {new Date(date).toLocaleDateString("en-US", {
@@ -33,8 +36,45 @@ const Workshop = ({ location, data }) => {
           dangerouslySetInnerHTML={{
             __html: introText.childMarkdownRemark.html,
           }}
+          className={styles.textModule}
         ></div>
+        {content.map(item => {
+          if (item.textId) {
+            return (
+              <div
+                className={styles.textModule}
+                dangerouslySetInnerHTML={{
+                  __html: item.text.childMarkdownRemark.html,
+                }}
+              ></div>
+            )
+          } else if (item.imageId) {
+            return (
+              <GatsbyImage
+                className={styles.imageModule}
+                image={item.image.gatsbyImageData}
+                alt={item.image.description}
+              ></GatsbyImage>
+            )
+          } else if (item.videoId) {
+            return (
+              <VideoPlayer
+                video={item}
+                videoId={item.videoId}
+                activeVideo={activeVideo}
+                setActiveVideo={setActiveVideo}
+              ></VideoPlayer>
+            )
+          } else {
+            return <div>Unknown Content</div>
+          }
+        })}
       </div>
+      {relatedContent && (
+        <div className={styles.relatedContainer}>
+          <h2 className={styles.related}>Related</h2>
+        </div>
+      )}
     </Layout>
   )
 }
