@@ -28,8 +28,7 @@ const Journal = ({ location, data }) => {
           {workshop.length > 1 ? (
             <div></div>
           ) : (
-            <Link
-              to={`/journal/${workshop[0].slug}`}
+            <div
               className={styles.workshopHighlight}
             >
               <GatsbyImage
@@ -43,9 +42,9 @@ const Journal = ({ location, data }) => {
                     __html: workshop[0].introText.childMarkdownRemark.excerpt,
                   }}
                 ></div>
-                <Link to={`/${workshop[0].slug}`}>Read More &rarr;</Link>
+                <Link to={`/journal/${workshop[0].slug}`}>Read More &rarr;</Link>
               </div>
-            </Link>
+            </div>
           )}
         </div>
         <div></div>
