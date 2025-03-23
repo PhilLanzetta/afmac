@@ -58,12 +58,14 @@ const Workshop = ({ location, data }) => {
             )
           } else if (item.videoId) {
             return (
+              <div className={styles.videoContainer}>
               <VideoPlayer
                 video={item}
                 videoId={item.videoId}
                 activeVideo={activeVideo}
                 setActiveVideo={setActiveVideo}
               ></VideoPlayer>
+              </div>
             )
           } else {
             return <div>Unknown Content</div>

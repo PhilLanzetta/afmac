@@ -36,6 +36,7 @@
 
 .highlightImage {
   width: 50%;
+  border-radius: 40px;
 }
 
 .highlightText {

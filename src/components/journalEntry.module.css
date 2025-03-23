@@ -11,6 +11,7 @@
 
 .headerImage {
  margin-top: 20px;
+ border-radius: 40px;
 }
 
 .textModule {
@@ -25,6 +26,12 @@
 .imageModule {
  width: 120%;
  margin: 80px -10%;
+ border-radius: 40px;
+}
+
+.videoContainer {
+  border-radius: 40px;
+  overflow: hidden;
 }
 
 .relatedContainer {
