@@ -77,8 +77,8 @@ const Index = ({ location, data }) => {
               <div className={styles.table}>
                 {workshopTable.map((item, index) => (
                   <div key={index} className={styles.row}>
-                    <p>{item.chapter}</p>
-                    <p>{item.location}</p>
+                    <p className={styles.chapter}>{item.chapter}</p>
+                    <p className={styles.location}>{item.location}</p>
                     <p className={styles.date}>
                       {new Date(item.date).toLocaleDateString("en-US", {
                         month: "long",

@@ -58,6 +58,7 @@ const Collective = ({ location, data }) => {
                 image={member.headshot.gatsbyImageData}
                 alt={member.headshot.description}
               ></GatsbyImage>
+              <p className={styles.mobileMemberName}>{member.name}</p>
               <div className={styles.memberInfo}>
                 <p className={styles.memberName}>{member.name}</p>
                 <div
@@ -104,16 +105,20 @@ const Collective = ({ location, data }) => {
                 }}
               ></div>
               <div className={styles.participantSocial}>
-              {member.websiteLink && (
-                <a href={member.websiteLink} target="_blank" rel="noreferrer">
-                  Website &#8599;
-                </a>
-              )}
-              {member.instagramLink && (
-                <a href={member.instagramLink} target="_blank" rel="noreferrer">
-                  Instagram &#8599;
-                </a>
-              )}
+                {member.websiteLink && (
+                  <a href={member.websiteLink} target="_blank" rel="noreferrer">
+                    Website &#8599;
+                  </a>
+                )}
+                {member.instagramLink && (
+                  <a
+                    href={member.instagramLink}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Instagram &#8599;
+                  </a>
+                )}
               </div>
             </div>
           ))}

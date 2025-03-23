@@ -57,3 +57,26 @@ a.footerLogo:hover {
 .footerBelowMargin {
   margin-bottom: 20px;
 }
+
+@media screen and (max-width: 800px) {
+  .footerContainer {
+    flex-direction: column;
+    padding: 20px;
+    gap: 20px;
+  }
+
+  .footerLinkContainer {
+  width: 100%;
+  justify-content: space-between;
+}
+}
+
+@media screen and (max-width: 600px) {
+  .footerLinkContainer {
+    flex-wrap: wrap;
+    padding-top: 20px;
+    gap: 20px;
+    row-gap: 40px;
+  }
+
+}

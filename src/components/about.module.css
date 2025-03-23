@@ -33,6 +33,7 @@
 
 .headshot {
   width: 30%;
+  border-radius: 40px;
 }
 
 .bio {
@@ -62,4 +63,46 @@
 
 .logo {
   width: 100%;
+}
+
+@media screen and (max-width: 750px) {
+  .artistInfo {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .headshot {
+    width: 100%;
+    border-radius: 20px;
+  }
+
+  .bio {
+    width: 100%;
+  }
+
+  .leaderCard {
+    border-radius: 20px;
+    padding: 20px;
+  }
+
+  .artCarContainer {
+    border-radius: 20px;
+    padding: 20px;
+  }
+
+  .artCarText {
+    padding: 20px 0;
+  }
+
+  .logoContainer {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 20px;
+    justify-content: center;
+  }
+
+  .logo {
+    width: 30%;
+  }
 }

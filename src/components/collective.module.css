@@ -69,11 +69,15 @@
 
 .memberHeadshot {
   width: 25%;
-  border-radius: 5%;
+  border-radius: 40px;
 }
 
 .memberName {
   text-transform: uppercase;
+}
+
+.mobileMemberName {
+  display: none;
 }
 
 .memberSocial {
@@ -90,19 +94,47 @@
 }
 
 .participant {
- display: flex;
- flex-direction: column;
- font-family: "Sohne Kraftig", sans-serif;
+  display: flex;
+  flex-direction: column;
+  font-family: "Sohne Kraftig", sans-serif;
 }
 
 .participantName {
- text-transform: uppercase;
- text-align: center;
- padding: 10px 0;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 10px 0;
 }
 
 .participantSocial {
- margin-top: 20px;
- display: flex;
- flex-direction: column;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+@media screen and (max-width: 900px) {
+  .memberName {
+    display: none;
+  }
+  .mobileMemberName {
+    display: inline-block;
+    text-transform: uppercase;
+    font-family: "Sohne Kraftig", sans-serif;
+  }
+
+  .collectiveMember {
+    flex-wrap: wrap;
+  }
+
+  .memberHeadshot {
+    width: 50%;
+    border-radius: 20px;
+  }
+
+  .memberInfo {
+    width: 100%;
+  }
+
+  .participantContainer {
+    grid-template-columns: 1fr 1fr;
+  }
 }

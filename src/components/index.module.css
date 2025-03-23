@@ -66,3 +66,31 @@
 .emailSignUp {
   margin-top: 40px;
 }
+
+@media screen and (max-width: 800px) {
+  .workshopInfoContainer {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .workshopInfoContainer > div {
+    width: 100%;
+  }
+
+  .readLink {
+    margin-top: 20px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .chapter,
+  .location {
+    grid-column-start: 1;
+    grid-column-end: 3;
+  }
+
+  .date {
+    grid-row-start: 1;
+    grid-column-start: 3;
+  }
+}

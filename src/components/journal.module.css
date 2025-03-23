@@ -45,3 +45,18 @@
   gap: 40px;
   width: 50%;
 }
+
+@media screen and (max-width: 750px) {
+  .workshopHighlight {
+    flex-direction: column;
+  }
+
+  .highlightImage {
+    width: 100%;
+  }
+
+  .highlightText {
+    width: 100%;
+    gap: 20px;
+  }
+}
