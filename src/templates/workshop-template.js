@@ -19,8 +19,8 @@ const Workshop = ({ location, data }) => {
   return (
     <Layout location={location}>
       <div className={styles.journalMain}>
-        <h1 className="heading center">{title}</h1>
-        {/* <p className="center">{workshopLocation}</p>
+        {/*<h1 className="heading center">{title}</h1>
+         <p className="center">{workshopLocation}</p>
         <GatsbyImage
           image={tileImage.gatsbyImageData}
           alt={tileImage.description}
