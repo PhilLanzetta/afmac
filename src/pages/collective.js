@@ -15,7 +15,7 @@ const Collective = ({ location, data }) => {
   return (
     <Layout location={location}>
       <div className={styles.collectiveMain}>
-        <h1 className="heading center">The Collective</h1>
+        <h1 className="heading center">Collective</h1>
         <div className={styles.collectiveHeader}>
           {collective.map((member, index) => (
             <a

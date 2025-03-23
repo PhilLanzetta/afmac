@@ -16,7 +16,7 @@ header {
 }
 
 .headerLogo {
-  width: clamp(190px, 23%, 625px);
+  width: clamp(130px, 23%, 625px);
 }
 
 .menuLink,

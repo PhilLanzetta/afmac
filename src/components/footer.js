@@ -31,14 +31,14 @@ const Footer = () => {
             </a>
           </div>
           <div className={styles.footerColumn}>
-            <p className={styles.footerUpper}>Supported by BMW Culture</p>
             <a
               href="https://bmwgroup.com/culture"
               target="_blank"
               rel="noreferrer"
-              className={styles.footerBelowMargin}
+              className={styles.footerUpper}
             >
-              Visit Website
+              Supported by <br />
+              BMW Culture
             </a>
           </div>
         </div>
