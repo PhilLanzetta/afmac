@@ -23,7 +23,6 @@ exports.createPages = async ({ actions, graphql }) => {
       path: `/journal/${workshopSlug}`,
       component: require.resolve("./src/templates/workshop-template.js"),
       context: { slug: workshopSlug },
-      defer: true,
     })
   })
 }
