@@ -6,20 +6,20 @@ import { GatsbyImage } from "gatsby-plugin-image"
 import VideoPlayer from "../components/videoPlayer"
 
 const Workshop = ({ location, data }) => {
-  // const [activeVideo, setActiveVideo] = useState(null)
-  // const {
-  //   title,
-  //   workshopLocation,
-  //   relatedContent,
-  //   introText,
-  //   content,
-  //   date,
-  //   tileImage,
-  // } = data.contentfulWorkshopEntry
+  const [activeVideo, setActiveVideo] = useState(null)
+  const {
+    title,
+    workshopLocation,
+    relatedContent,
+    introText,
+    content,
+    date,
+    tileImage,
+  } = data.contentfulWorkshopEntry
   return (
     <Layout location={location}>
       <div className={styles.journalMain}>
-        {/*<h1 className="heading center">{title}</h1>
+        <h1 className="heading center">{title}</h1>
          <p className="center">{workshopLocation}</p>
         <GatsbyImage
           image={tileImage.gatsbyImageData}
@@ -74,8 +74,7 @@ const Workshop = ({ location, data }) => {
         <div className={styles.relatedContainer}>
           <h2 className={styles.related}>Related</h2>
         </div>
-      )} */}
-      </div>
+      )}
     </Layout>
   )
 }
