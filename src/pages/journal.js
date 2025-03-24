@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { graphql, Link } from "gatsby"
-import Layout from "../components/layout"
+import { Fade } from "react-awesome-reveal"
 import * as styles from "../components/journal.module.css"
 import { GatsbyImage } from "gatsby-plugin-image"
 
@@ -14,8 +14,11 @@ const Journal = ({ location, data }) => {
   const tags = data.allContentfulTag.nodes
 
   return (
-      <div className={styles.journalMain}>
+    <div className={styles.journalMain}>
+      <Fade triggerOnce={true}>
         <h1 className="heading center">Journal</h1>
+      </Fade>
+      <Fade triggerOnce={true}>
         <div className={styles.tagContainer}>
           {tags.map(tag => (
             <button className={styles.tagButton}>
@@ -23,13 +26,13 @@ const Journal = ({ location, data }) => {
             </button>
           ))}
         </div>
+      </Fade>
+      <Fade triggerOnce={true}>
         <div>
           {workshop.length > 1 ? (
             <div></div>
           ) : (
-            <div
-              className={styles.workshopHighlight}
-            >
+            <div className={styles.workshopHighlight}>
               <GatsbyImage
                 image={workshop[0].tileImage.gatsbyImageData}
                 alt={workshop[0].tileImage.description}
@@ -41,13 +44,16 @@ const Journal = ({ location, data }) => {
                     __html: workshop[0].introText.childMarkdownRemark.excerpt,
                   }}
                 ></div>
-                <Link to={`/journal/${workshop[0].slug}`}>Read More &rarr;</Link>
+                <Link to={`/journal/${workshop[0].slug}`}>
+                  Read More &rarr;
+                </Link>
               </div>
             </div>
           )}
         </div>
-        <div></div>
-      </div>
+      </Fade>
+      <div></div>
+    </div>
   )
 }
 

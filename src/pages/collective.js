@@ -6,14 +6,18 @@ import slugify from "slugify"
 import useWindowSize from "../utils/useWindowSize"
 import { AnimatePresence, motion } from "motion/react"
 import { GatsbyImage } from "gatsby-plugin-image"
+import { Fade } from "react-awesome-reveal"
 
 const Collective = ({ location, data }) => {
   const { collective, workshopParticipants } = data.contentfulCollectivePage
   const [heroImage, setHeroImage] = useState(null)
   const { width } = useWindowSize()
   return (
-      <div className={styles.collectiveMain}>
+    <div className={styles.collectiveMain}>
+      <Fade triggerOnce={true}>
         <h1 className="heading center">Collective</h1>
+      </Fade>
+      <Fade triggerOnce={true}>
         <div className={styles.collectiveHeader}>
           {collective.map((member, index) => (
             <a
@@ -44,10 +48,11 @@ const Collective = ({ location, data }) => {
             )}
           </AnimatePresence>
         </div>
-        <div className={styles.collectiveContainer}>
-          {collective.map((member, index) => (
+      </Fade>
+      <div className={styles.collectiveContainer}>
+        {collective.map((member, index) => (
+          <Fade key={index} triggerOnce={true}>
             <div
-              key={index}
               id={`${slugify(member.name, { lower: true })}`}
               className={styles.collectiveMember}
             >
@@ -86,12 +91,16 @@ const Collective = ({ location, data }) => {
                 </div>
               </div>
             </div>
-          ))}
-        </div>
+          </Fade>
+        ))}
+      </div>
+      <Fade triggerOnce={true}>
         <h2 className="heading center">Workshop Participants</h2>
-        <div className={styles.participantContainer}>
-          {workshopParticipants.map((member, index) => (
-            <div key={index} className={styles.participant}>
+      </Fade>
+      <div className={styles.participantContainer}>
+        {workshopParticipants.map((member, index) => (
+          <Fade triggerOnce={true} key={index}>
+            <div className={styles.participant}>
               <GatsbyImage
                 image={member.headshot.gatsbyImageData}
                 alt={member.headshot.description}
@@ -119,9 +128,10 @@ const Collective = ({ location, data }) => {
                 )}
               </div>
             </div>
-          ))}
-        </div>
+          </Fade>
+        ))}
       </div>
+    </div>
   )
 }
 
