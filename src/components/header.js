@@ -5,12 +5,11 @@ import * as styles from "./header.module.css"
 const Header = ({ journal }) => {
   return (
     <header style={{ color: journal ? "#000" : "#fff" }}>
-      <Link to="/">
+      <Link to="/" className={styles.headerLogo}>
         <svg
           viewBox="0 0 733 305"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          className={styles.headerLogo}
         >
           <path
             d="M350.6 84.7L346.1 202.3H355.1L350.6 84.7ZM356.2 234.1H344.6L342.4 290.6H311L328.6 12.1H375L393.7 290.6H358.5L356.2 234.1Z"
