@@ -7,7 +7,7 @@ const Footer = () => {
     <div className={styles.footer}>
       <div className={styles.footerContainer}>
         <Link to="/" className={styles.footerLogo}>
-          African Film and <br />
+          African Film & <br />
           Media Arts Collective
         </Link>
         <div className={styles.footerLinkContainer}>
@@ -21,7 +21,7 @@ const Footer = () => {
             <a href="mailto:sampleemail@gmail.com">Email</a>
           </div>
           <div className={styles.footerColumn}>
-            <p className={styles.footerUpper}>Socials</p>
+            <p className={styles.footerUpper}>Social</p>
             <a
               href="https://instagram.com/handle"
               target="_blank"
