@@ -17,7 +17,7 @@
   cursor: pointer;
   padding: 5px 15px;
   border: 1px solid #000;
-  border-radius: 40px;
+  border-radius: 20px;
   transition: all 400ms;
 }
 
@@ -37,7 +37,7 @@
 
 .highlightImage {
   width: 50%;
-  border-radius: 40px;
+  border-radius: 20px;
 }
 
 .highlightText {

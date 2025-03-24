@@ -10,14 +10,16 @@ import useWindowSize from "../utils/useWindowSize"
 import * as styles from "./videoPlayer.module.css"
 import { AnimatePresence, motion } from "framer-motion"
 import play from "../images/play.svg"
+import useOnScreen from "../utils/useOnScreen"
 
-let count = 0
+let count = 25
 
 const VideoPlayer = ({ video, videoId, activeVideo, setActiveVideo }) => {
   const videoPlayerRef = useRef(null)
   const controlRef = useRef(null)
   const fullScreenRef = useRef(null)
   const elementRef = useRef(null)
+  const isOnScreen = useOnScreen(elementRef)
 
   const [videoState, setVideoState] = useState({
     playing: false,
@@ -145,6 +147,16 @@ const VideoPlayer = ({ video, videoId, activeVideo, setActiveVideo }) => {
       setVideoState(prevVideoState => ({ ...prevVideoState, playing: false }))
     }
   }, [activeVideo, videoId])
+
+  useEffect(() => {
+    if (isOnScreen) {
+      setVideoState(prevVideoState => ({ ...prevVideoState, playing: true }))
+      controlRef.current.style.visibility = "hidden"
+      fullScreenRef.current.style.visibility = "hidden"
+    } else {
+      setVideoState(prevVideoState => ({ ...prevVideoState, playing: false }))
+    }
+  }, [isOnScreen])
 
   return (
     <div className={styles.videoPlayerContainer}>

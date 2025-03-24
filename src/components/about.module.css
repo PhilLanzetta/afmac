@@ -20,7 +20,7 @@
 .leaderCard {
   background: #fff;
   width: 100%;
-  border-radius: 40px;
+  border-radius: 20px;
   padding: 40px;
   color: #000;
   margin-bottom: 40px;
@@ -33,7 +33,7 @@
 
 .headshot {
   width: 30%;
-  border-radius: 40px;
+  border-radius: 20px;
 }
 
 .bio {
@@ -43,7 +43,7 @@
 .artCarContainer {
   width: 100%;
   border: 1px solid #fff;
-  border-radius: 40px;
+  border-radius: 20px;
   padding: 40px;
   margin-bottom: 100px;
 }

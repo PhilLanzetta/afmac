@@ -15,7 +15,9 @@ const Layout = ({ location, children }) => {
       <Header journal={isJournal}></Header>
       <div
         style={{
-          position: "absolute",
+          position: "fixed",
+          top: "0",
+          left: "0",
           height: "100vh",
           width: "100vw",
           background: "#000",
@@ -31,10 +33,9 @@ const Layout = ({ location, children }) => {
           exit="out"
         >
           {children}
+        <Footer key="footer"></Footer>
         </motion.main>
       </AnimatePresence>
-
-      <Footer></Footer>
     </>
   )
 }

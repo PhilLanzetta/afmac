@@ -58,13 +58,7 @@
 .fullScreenBtn {
   position: absolute;
   z-index: 15000;
-  top: 30px;
-  right: 30px;
+  top: 20px;
+  right: 20px;
   cursor: pointer;
-}
-
-@media screen and (max-width: 700px) {
-  .videoPlayerContainer {
-    margin: 0 10px;
-  }
 }
