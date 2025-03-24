@@ -158,7 +158,7 @@ const VideoPlayer = ({ video, videoId, activeVideo, setActiveVideo }) => {
     } else {
       setVideoState(prevVideoState => ({ ...prevVideoState, playing: false }))
     }
-  }, [isOnScreen])
+  }, [isOnScreen, isMobile])
 
   return (
     <div className={styles.videoPlayerContainer}>

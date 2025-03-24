@@ -20,7 +20,7 @@ const Layout = ({ location, children }) => {
           left: "0",
           height: "100vh",
           width: "100vw",
-          background: "#000",
+          background: isJournal ? "#fff" : "#000",
           zIndex: "-1",
         }}
       ></div>
@@ -33,7 +33,7 @@ const Layout = ({ location, children }) => {
           exit="out"
         >
           {children}
-        <Footer key="footer"></Footer>
+          <Footer key="footer"></Footer>
         </motion.main>
       </AnimatePresence>
     </>
