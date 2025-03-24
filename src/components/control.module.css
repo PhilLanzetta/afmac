@@ -5,6 +5,7 @@
   left: 0;
   right: 0;
   z-index: 15001;
+  font-size: calc(1rem * 0.7);
 }
 
 .controlsContainer {
