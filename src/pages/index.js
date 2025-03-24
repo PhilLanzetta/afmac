@@ -52,7 +52,6 @@ const Index = ({ location, data }) => {
         )}
       </AnimatePresence>
       <div className={styles.indexMain}>
-        <Fade triggerOnce={true}>
           <div className={styles.homeVideo}>
             <VideoPlayer
               activeVideo={activeVideo}
@@ -61,7 +60,6 @@ const Index = ({ location, data }) => {
               videoId={homeVideo.id}
             ></VideoPlayer>
           </div>
-        </Fade>
         <Fade triggerOnce={true}>
           <div className={styles.workshopCard}>
             <h2 className="heading">Workshops</h2>

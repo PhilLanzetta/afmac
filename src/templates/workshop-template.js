@@ -70,8 +70,7 @@ const Workshop = ({ location, data }) => {
             )
           } else if (item.videoId) {
             return (
-              <Fade triggerOnce={true} key={item.videoId}>
-                <div className={styles.videoContainer}>
+                <div className={styles.videoContainer} key={item.videoId}>
                   <VideoPlayer
                     video={item}
                     videoId={item.videoId}
@@ -79,7 +78,6 @@ const Workshop = ({ location, data }) => {
                     setActiveVideo={setActiveVideo}
                   ></VideoPlayer>
                 </div>
-              </Fade>
             )
           } else {
             return <div>Unknown Content</div>
