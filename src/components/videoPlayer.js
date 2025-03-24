@@ -151,8 +151,10 @@ const VideoPlayer = ({ video, videoId, activeVideo, setActiveVideo }) => {
   useEffect(() => {
     if (isOnScreen) {
       setVideoState(prevVideoState => ({ ...prevVideoState, playing: true }))
-      controlRef.current.style.visibility = "hidden"
-      fullScreenRef.current.style.visibility = "hidden"
+      if (!isMobile) {
+        controlRef.current.style.visibility = "hidden"
+        fullScreenRef.current.style.visibility = "hidden"
+      }
     } else {
       setVideoState(prevVideoState => ({ ...prevVideoState, playing: false }))
     }
