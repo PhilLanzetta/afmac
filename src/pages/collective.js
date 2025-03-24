@@ -1,7 +1,6 @@
 import React, { useState } from "react"
 import { graphql } from "gatsby"
 import Seo from "../components/seo"
-import Layout from "../components/layout"
 import * as styles from "../components/collective.module.css"
 import slugify from "slugify"
 import useWindowSize from "../utils/useWindowSize"
@@ -13,7 +12,6 @@ const Collective = ({ location, data }) => {
   const [heroImage, setHeroImage] = useState(null)
   const { width } = useWindowSize()
   return (
-    <Layout location={location}>
       <div className={styles.collectiveMain}>
         <h1 className="heading center">Collective</h1>
         <div className={styles.collectiveHeader}>
@@ -124,7 +122,6 @@ const Collective = ({ location, data }) => {
           ))}
         </div>
       </div>
-    </Layout>
   )
 }
 

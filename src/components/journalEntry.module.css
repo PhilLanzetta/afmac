@@ -2,6 +2,7 @@
   min-height: 100vh;
   padding: 180px clamp(calc(10px + 1rem), 20vw, 2000px);
   font-family: "Sohne Kraftig", sans-serif;
+  background: #fff;
 }
 
 .date {

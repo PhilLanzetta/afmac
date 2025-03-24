@@ -39,7 +39,7 @@ const Index = ({ location, data }) => {
   }, [])
 
   return (
-    <Layout location={location}>
+    <>
       <AnimatePresence>
         {loading && (
           <motion.div
@@ -95,7 +95,7 @@ const Index = ({ location, data }) => {
           </div>
         </div>
       </div>
-    </Layout>
+    </>
   )
 }
 

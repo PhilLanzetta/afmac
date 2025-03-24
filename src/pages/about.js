@@ -1,14 +1,12 @@
 import React from "react"
 import { graphql } from "gatsby"
-import Layout from "../components/layout"
 import * as styles from "../components/about.module.css"
 import { GatsbyImage } from "gatsby-plugin-image"
 
-const About = ({ data }) => {
+const About = ({ data, location }) => {
   const { aboutText, artCarText, leadership, headlineText, partnerLogos } =
     data.contentfulAboutPage
   return (
-    <Layout>
       <div className={styles.aboutMain}>
         <h1 className="heading center">About</h1>
         <div
@@ -62,7 +60,6 @@ const About = ({ data }) => {
           ))}
         </div>
       </div>
-    </Layout>
   )
 }
 

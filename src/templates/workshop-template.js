@@ -17,10 +17,10 @@ const Workshop = ({ location, data }) => {
     tileImage,
   } = data.contentfulWorkshopEntry
   return (
-    <Layout location={location}>
+    <>
       <div className={styles.journalMain}>
         <h1 className="heading center">{title}</h1>
-         <p className="center">{workshopLocation}</p>
+        <p className="center">{workshopLocation}</p>
         <GatsbyImage
           image={tileImage.gatsbyImageData}
           alt={tileImage.description}
@@ -59,12 +59,12 @@ const Workshop = ({ location, data }) => {
           } else if (item.videoId) {
             return (
               <div className={styles.videoContainer}>
-              <VideoPlayer
-                video={item}
-                videoId={item.videoId}
-                activeVideo={activeVideo}
-                setActiveVideo={setActiveVideo}
-              ></VideoPlayer>
+                <VideoPlayer
+                  video={item}
+                  videoId={item.videoId}
+                  activeVideo={activeVideo}
+                  setActiveVideo={setActiveVideo}
+                ></VideoPlayer>
               </div>
             )
           } else {
@@ -77,7 +77,7 @@ const Workshop = ({ location, data }) => {
           <h2 className={styles.related}>Related</h2>
         </div>
       )}
-    </Layout>
+    </>
   )
 }
 

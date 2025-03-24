@@ -14,7 +14,6 @@ const Journal = ({ location, data }) => {
   const tags = data.allContentfulTag.nodes
 
   return (
-    <Layout location={location}>
       <div className={styles.journalMain}>
         <h1 className="heading center">Journal</h1>
         <div className={styles.tagContainer}>
@@ -49,7 +48,6 @@ const Journal = ({ location, data }) => {
         </div>
         <div></div>
       </div>
-    </Layout>
   )
 }
 

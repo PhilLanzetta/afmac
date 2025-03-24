@@ -2,9 +2,9 @@ import React from "react"
 import { Link } from "gatsby"
 import * as styles from "./header.module.css"
 
-const Header = ({ textColor }) => {
+const Header = ({ journal }) => {
   return (
-    <header style={{ color: textColor }}>
+    <header style={{ color: journal ? "#000" : "#fff" }}>
       <Link to="/">
         <svg
           viewBox="0 0 733 305"

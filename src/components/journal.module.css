@@ -1,6 +1,7 @@
 .journalMain {
   min-height: 100vh;
   padding: 180px clamp(calc(10px + 1rem), 3vw, 500px);
+  background: #fff;
 }
 
 .tagContainer {
