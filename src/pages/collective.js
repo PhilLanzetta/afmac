@@ -76,7 +76,7 @@ const Collective = ({ location, data }) => {
                       target="_blank"
                       rel="noreferrer"
                     >
-                      Website &#8599;
+                      Website ↗;
                     </a>
                   )}
                   {member.instagramLink && (
@@ -85,7 +85,7 @@ const Collective = ({ location, data }) => {
                       target="_blank"
                       rel="noreferrer"
                     >
-                      Instagram &#8599;
+                      Instagram ↗;
                     </a>
                   )}
                 </div>
@@ -114,7 +114,7 @@ const Collective = ({ location, data }) => {
               <div className={styles.participantSocial}>
                 {member.websiteLink && (
                   <a href={member.websiteLink} target="_blank" rel="noreferrer">
-                    Website &#8599;
+                    Website ↗
                   </a>
                 )}
                 {member.instagramLink && (
@@ -123,7 +123,7 @@ const Collective = ({ location, data }) => {
                     target="_blank"
                     rel="noreferrer"
                   >
-                    Instagram &#8599;
+                    Instagram ↗
                   </a>
                 )}
               </div>

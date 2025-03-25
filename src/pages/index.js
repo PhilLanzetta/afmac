@@ -102,7 +102,7 @@ const Index = ({ location, data }) => {
                     className={styles.emailForm}
                     namePlaceholder="Name"
                     emailPlaceholder="Email"
-                    submitText="→"
+                    submitText=" →"
                   />
                 </div>
               </div>

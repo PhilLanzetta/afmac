@@ -76,7 +76,7 @@
   position: relative;
 }
 
-.emailForm button[type=submit] {
+.emailForm button[type="submit"] {
   position: absolute;
   right: 10px;
   cursor: pointer;
@@ -91,6 +91,10 @@
 }
 
 @media screen and (max-width: 800px) {
+  .workshopCard {
+    padding: 20px;
+  }
+
   .workshopInfoContainer {
     flex-direction: column;
     gap: 40px;
@@ -103,17 +107,25 @@
   .readLink {
     margin-top: 20px;
   }
+
+  .homeVideo {
+    width: 100%;
+    margin: 60px 0;
+  }
 }
 
 @media screen and (max-width: 600px) {
+  .row {
+  grid-template-columns: 1fr 1fr;
+}
   .chapter,
   .location {
     grid-column-start: 1;
-    grid-column-end: 3;
+    grid-column-end: 2;
   }
 
   .date {
     grid-row-start: 1;
-    grid-column-start: 3;
+    grid-column-start: 2;
   }
 }
