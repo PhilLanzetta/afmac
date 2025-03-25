@@ -18,10 +18,20 @@ header {
 
 .headerLogo {
   width: clamp(160px, 18%, 785px);
+  display: flex;
+  gap: 2%;
 }
 
-.headerLogo svg {
-  width: 100%;
+.logoCircle {
+  width: 41%;
+}
+
+.logoText {
+  width: 59%;
+}
+
+.headerLogo:hover .logoCircle {
+  animation: spin 6s linear infinite;
 }
 
 .menuLink,
@@ -41,4 +51,11 @@ header {
   left: 100%;
   top: 50%;
   transform: translate(50%, -50%);
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+    transform-origin: center;
+  }
 }
