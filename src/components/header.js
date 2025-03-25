@@ -1190,6 +1190,7 @@ const Header = ({ journal }) => {
           to="/journal"
           className={styles.menuLink}
           activeClassName={styles.activeLink}
+          partiallyActive={styles.activeLink}
         >
           Journal
         </Link>

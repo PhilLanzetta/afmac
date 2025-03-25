@@ -70,20 +70,32 @@ const Journal = ({ location, data }) => {
       <div className={styles.supplementalContainer}>
         {supplemental.map((entry, index) => {
           return (
-            <div key={index} className={styles.supplementalTile}>
+            <Link
+              key={index}
+              className={styles.supplementalTile}
+              to={`/journal/${entry.slug}`}
+            >
               <GatsbyImage
                 image={entry.tileDisplay.image.gatsbyImageData}
                 alt={entry.tileDisplay.image.description}
                 className={styles.supplementalDisplay}
               ></GatsbyImage>
-              <p>
-                {new Date(entry.date).toLocaleDateString("en-US", {
-                  month: "long",
-                  day: "numeric",
-                  year: "numeric",
-                })}
-              </p>
-            </div>
+              <div>
+                <p>{entry.artist}</p>
+                <p>
+                  {new Date(entry.date).toLocaleDateString("en-US", {
+                    month: "long",
+                    day: "numeric",
+                    year: "numeric",
+                  })}
+                </p>
+              </div>
+              <div className={styles.mediumContainer}>
+                {entry.medium?.map((type, index) => (
+                  <button className={styles.tagButton}>{type}</button>
+                ))}
+              </div>
+            </Link>
           )
         })}
       </div>
@@ -126,6 +138,7 @@ export const query = graphql`
     allContentfulSupplementalContent {
       nodes {
         id
+        slug
         tileDisplay {
           image {
             description
@@ -133,6 +146,8 @@ export const query = graphql`
           }
         }
         date
+        medium
+        artist
         metadata {
           tags {
             id

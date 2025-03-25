@@ -81,11 +81,22 @@
   flex-direction: column;
   break-inside: avoid-column;
   align-items: center;
+  gap: 10px;
+}
+
+.supplementalTile p {
+  margin-bottom: 0;
+  text-align: center;
 }
 
 .supplementalDisplay {
   width: 100%;
   border-radius: 20px;
+}
+
+.mediumContainer {
+  display: flex;
+  gap: 5px;
 }
 
 @media screen and (max-width: 750px) {
