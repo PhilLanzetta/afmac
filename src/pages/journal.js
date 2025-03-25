@@ -69,19 +69,31 @@ const Journal = ({ location, data }) => {
       </Fade>
       <div className={styles.supplementalContainer}>
         {supplemental.map((entry, index) => {
+          const image = entry.tileDisplay.imageDisplayId
+          const text = entry.tileDisplay.textDisplayId
           return (
             <Link
               key={index}
               className={styles.supplementalTile}
               to={`/journal/${entry.slug}`}
             >
-              <GatsbyImage
-                image={entry.tileDisplay.image.gatsbyImageData}
-                alt={entry.tileDisplay.image.description}
-                className={styles.supplementalDisplay}
-              ></GatsbyImage>
+              {image && (
+                <GatsbyImage
+                  image={entry.tileDisplay.image.gatsbyImageData}
+                  alt={entry.tileDisplay.image.description}
+                  className={styles.supplementalDisplay}
+                ></GatsbyImage>
+              )}
+              {text && (
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: entry.tileDisplay.text.childMarkdownRemark.html,
+                  }}
+                  className={styles.tileDisplayText}
+                ></div>
+              )}
               <div>
-                <p>{entry.artist}</p>
+                <p>{entry.title}</p>
                 <p>
                   {new Date(entry.date).toLocaleDateString("en-US", {
                     month: "long",
@@ -89,11 +101,6 @@ const Journal = ({ location, data }) => {
                     year: "numeric",
                   })}
                 </p>
-              </div>
-              <div className={styles.mediumContainer}>
-                {entry.medium?.map((type, index) => (
-                  <button className={styles.tagButton}>{type}</button>
-                ))}
               </div>
             </Link>
           )
@@ -140,13 +147,25 @@ export const query = graphql`
         id
         slug
         tileDisplay {
-          image {
-            description
-            gatsbyImageData(layout: FULL_WIDTH)
+          ... on ContentfulImageModule {
+            imageDisplayId: id
+            image {
+              description
+              gatsbyImageData
+            }
+          }
+          ... on ContentfulTextModule {
+            textDisplayId: id
+            text {
+              childMarkdownRemark {
+                html
+              }
+            }
           }
         }
         date
         medium
+        title
         artist
         metadata {
           tags {

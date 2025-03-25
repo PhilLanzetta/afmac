@@ -30,6 +30,10 @@ header {
   width: 59%;
 }
 
+.headerLogo:hover {
+  opacity: 1;
+}
+
 .headerLogo:hover .logoCircle {
   animation: spin 6s linear infinite;
 }

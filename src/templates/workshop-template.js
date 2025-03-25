@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 import { Fade } from "react-awesome-reveal"
 import * as styles from "../components/journalEntry.module.css"
 import { GatsbyImage } from "gatsby-plugin-image"
@@ -70,14 +70,14 @@ const Workshop = ({ location, data }) => {
             )
           } else if (item.videoId) {
             return (
-                <div className={styles.videoContainer} key={item.videoId}>
-                  <VideoPlayer
-                    video={item}
-                    videoId={item.videoId}
-                    activeVideo={activeVideo}
-                    setActiveVideo={setActiveVideo}
-                  ></VideoPlayer>
-                </div>
+              <div className={styles.videoContainer} key={item.videoId}>
+                <VideoPlayer
+                  video={item}
+                  videoId={item.videoId}
+                  activeVideo={activeVideo}
+                  setActiveVideo={setActiveVideo}
+                ></VideoPlayer>
+              </div>
             )
           } else {
             return <div>Unknown Content</div>
@@ -88,6 +88,13 @@ const Workshop = ({ location, data }) => {
         <div className={styles.relatedContainer}>
           <Fade triggerOnce={true}>
             <h2 className={styles.related}>Related</h2>
+            {relatedContent.map((item, index) => (
+              <Link
+                key={index}
+                className={styles.supplementalTile}
+                to={`/journal/${item.slug}`}
+              ></Link>
+            ))}
           </Fade>
         </div>
       )}
@@ -102,9 +109,20 @@ export const query = graphql`
       workshopLocation: location
       relatedContent {
         tileDisplay {
-          image {
-            gatsbyImageData
-            description
+          ... on ContentfulImageModule {
+            imageDisplayId: id
+            image {
+              description
+              gatsbyImageData
+            }
+          }
+          ... on ContentfulTextModule {
+            textDisplayId: id
+            text {
+              childMarkdownRemark {
+                html
+              }
+            }
           }
         }
         id

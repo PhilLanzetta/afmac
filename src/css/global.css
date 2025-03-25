@@ -82,6 +82,7 @@ p {
   text-transform: uppercase;
   font-size: calc(1rem + 3vw);
   letter-spacing: 1px;
+  font-weight: normal;
 }
 
 .center {
