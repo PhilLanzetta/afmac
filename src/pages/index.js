@@ -6,6 +6,7 @@ import { Fade } from "react-awesome-reveal"
 import Seo from "../components/seo"
 import * as styles from "../components/index.module.css"
 import VideoPlayer from "../components/videoPlayer"
+import ConvertKit from "convertkit-react"
 
 const Index = ({ location, data }) => {
   const [loading, setLoading] = useState(true)
@@ -26,6 +27,11 @@ const Index = ({ location, data }) => {
     if (sessionStorage.getItem("intro")) {
       setLoading(false)
     }
+  }, [])
+
+  useEffect(() => {
+    document.getElementById("ck-first-name").required = true
+    document.getElementById("ck-email").required = true
   }, [])
 
   useEffect(() => {
@@ -52,14 +58,14 @@ const Index = ({ location, data }) => {
         )}
       </AnimatePresence>
       <div className={styles.indexMain}>
-          <div className={styles.homeVideo}>
-            <VideoPlayer
-              activeVideo={activeVideo}
-              setActiveVideo={setActiveVideo}
-              video={homeVideo}
-              videoId={homeVideo.id}
-            ></VideoPlayer>
-          </div>
+        <div className={styles.homeVideo}>
+          <VideoPlayer
+            activeVideo={activeVideo}
+            setActiveVideo={setActiveVideo}
+            video={homeVideo}
+            videoId={homeVideo.id}
+          ></VideoPlayer>
+        </div>
         <Fade triggerOnce={true}>
           <div className={styles.workshopCard}>
             <h2 className="heading">Workshops</h2>
@@ -91,6 +97,13 @@ const Index = ({ location, data }) => {
                 </div>
                 <div className={styles.emailSignUp}>
                   <p className={styles.emailHeading}>Join the Journey</p>
+                  <ConvertKit
+                    formId={process.env.GATSBY_FORM_ID}
+                    className={styles.emailForm}
+                    namePlaceholder="Name"
+                    emailPlaceholder="Email"
+                    submitText="→"
+                  />
                 </div>
               </div>
             </div>

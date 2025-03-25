@@ -68,6 +68,28 @@
   margin-top: 40px;
 }
 
+.emailForm {
+  width: 100%;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  position: relative;
+}
+
+.emailForm button[type=submit] {
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
+  z-index: 5;
+}
+
+.emailForm input {
+  width: 50%;
+  padding: 10px;
+  border-radius: 5px;
+  border-width: 1px;
+}
+
 @media screen and (max-width: 800px) {
   .workshopInfoContainer {
     flex-direction: column;
