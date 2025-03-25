@@ -23,7 +23,7 @@ const Footer = () => {
           <div className={styles.footerColumn}>
             <p className={styles.footerUpper}>Social</p>
             <a
-              href="https://instagram.com/handle"
+              href="https://www.instagram.com/a.f.m.a.c"
               target="_blank"
               rel="noreferrer"
             >

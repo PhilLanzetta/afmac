@@ -50,7 +50,6 @@ const About = ({ data, location }) => {
       ))}
       <Fade triggerOnce={true}>
         <div className={styles.artCarContainer}>
-          <p className="heading">BMW Art Car</p>
           <div
             dangerouslySetInnerHTML={{
               __html: artCarText.childMarkdownRemark.html,

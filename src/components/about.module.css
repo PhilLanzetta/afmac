@@ -8,8 +8,7 @@
 
 .headline {
   padding: 80px 10%;
-  font-size: calc(1rem + 1.5vw);
-  text-align: center;
+  font-size: calc(1rem + 1vw);
 }
 
 .aboutText {
@@ -28,6 +27,7 @@
 
 .artistInfo {
   display: flex;
+  align-items: flex-start;
   gap: 40px;
 }
 
