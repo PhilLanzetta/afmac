@@ -30,7 +30,22 @@ const Journal = ({ location, data }) => {
       <Fade triggerOnce={true}>
         <div>
           {workshop.length > 1 ? (
-            <div></div>
+            <div className={styles.workshopHighlightsContainer}>
+              {workshop.map((entry, index) => (
+                <Link
+                  key={index}
+                  to={`/journal/${entry.slug}`}
+                  className={styles.multipleHighlightContainer}
+                >
+                  <GatsbyImage
+                    image={entry.tileImage.gatsbyImageData}
+                    alt={entry.tileImage.description}
+                    className={styles.multipleHighlightImage}
+                  ></GatsbyImage>
+                  <p>{entry.location}</p>
+                </Link>
+              ))}
+            </div>
           ) : (
             <div className={styles.workshopHighlight}>
               <GatsbyImage
@@ -52,7 +67,26 @@ const Journal = ({ location, data }) => {
           )}
         </div>
       </Fade>
-      <div></div>
+      <div className={styles.supplementalContainer}>
+        {supplemental.map((entry, index) => {
+          return (
+            <div key={index} className={styles.supplementalTile}>
+              <GatsbyImage
+                image={entry.tileDisplay.image.gatsbyImageData}
+                alt={entry.tileDisplay.image.description}
+                className={styles.supplementalDisplay}
+              ></GatsbyImage>
+              <p>
+                {new Date(entry.date).toLocaleDateString("en-US", {
+                  month: "long",
+                  day: "numeric",
+                  year: "numeric",
+                })}
+              </p>
+            </div>
+          )
+        })}
+      </div>
     </div>
   )
 }

@@ -2,6 +2,7 @@
   min-height: 100vh;
   padding: 180px clamp(calc(10px + 1rem), 3vw, 500px);
   background: #fff;
+  font-family: "Sohne Kraftig", sans-serif;
 }
 
 .tagContainer {
@@ -45,6 +46,46 @@
   flex-direction: column;
   gap: 40px;
   width: 50%;
+}
+
+.workshopHighlightsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  gap: 3%;
+  margin: 40px 0;
+}
+
+.multipleHighlightContainer {
+  display: block;
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+
+.multipleHighlightImage {
+  width: 100%;
+  border-radius: 20px;
+  aspect-ratio: 1920 / 1283;
+}
+
+.supplementalContainer {
+  column-count: 4;
+}
+
+.supplementalTile {
+  display: flex;
+  flex-direction: column;
+  break-inside: avoid-column;
+  align-items: center;
+}
+
+.supplementalDisplay {
+  width: 100%;
+  border-radius: 20px;
 }
 
 @media screen and (max-width: 750px) {
