@@ -14,6 +14,10 @@ const Index = ({ location, data }) => {
   const { homeVideo, workshopDescription, workshopTable } =
     data.contentfulHomePage
 
+  const confirmed = location.hash === "#confirmed"
+  console.log(confirmed)
+
+  console.log(location)
   useEffect(() => {
     const body = document.body
     if (loading === true) {
@@ -76,15 +80,24 @@ const Index = ({ location, data }) => {
                     __html: workshopDescription.childMarkdownRemark.html,
                   }}
                 ></div>
-                <div className={styles.emailSignUp}>
-                  <p className={styles.emailHeading}>Join the Journey</p>
+                <div className={styles.emailSignUp} id="confirmed">
+                  <p className={styles.emailHeading}>
+                    {confirmed ? "Thank You" : "Join the Journey"}
+                  </p>
                   <ConvertKit
                     formId={process.env.GATSBY_FORM_ID}
-                    className={styles.emailForm}
+                    className={
+                      confirmed ? styles.emailFormConfirmed : styles.emailForm
+                    }
                     namePlaceholder="Name"
                     emailPlaceholder="Email"
                     submitText=" →"
                   />
+                  {confirmed && (
+                    <p className={styles.confirmSubtext}>
+                      Please check your email to confirm your subscription.
+                    </p>
+                  )}
                 </div>
               </div>
               <div>

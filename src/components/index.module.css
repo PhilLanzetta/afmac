@@ -77,6 +77,14 @@
   position: relative;
 }
 
+.emailFormConfirmed {
+  display: none;
+}
+
+.confirmSubtext {
+  font-size: calc(1rem * 0.75);
+}
+
 .emailForm button[type="submit"] {
   position: absolute;
   right: 10px;
@@ -101,7 +109,7 @@
 .emailForm input:-webkit-autofill:hover,
 .emailForm input:-webkit-autofill:focus,
 .emailForm input:-webkit-autofill:active {
-   -webkit-box-shadow: 0 0 0px 1000px white inset;
+  -webkit-box-shadow: 0 0 0px 1000px white inset;
 }
 
 @media screen and (max-width: 800px) {
