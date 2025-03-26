@@ -76,9 +76,16 @@ const Index = ({ location, data }) => {
                     __html: workshopDescription.childMarkdownRemark.html,
                   }}
                 ></div>
-                <Link to="/journal" className={styles.readLink}>
-                  Read the Journal &rarr;
-                </Link>
+                <div className={styles.emailSignUp}>
+                  <p className={styles.emailHeading}>Join the Journey</p>
+                  <ConvertKit
+                    formId={process.env.GATSBY_FORM_ID}
+                    className={styles.emailForm}
+                    namePlaceholder="Name"
+                    emailPlaceholder="Email"
+                    submitText=" →"
+                  />
+                </div>
               </div>
               <div>
                 <div className={styles.table}>
@@ -95,16 +102,9 @@ const Index = ({ location, data }) => {
                     </div>
                   ))}
                 </div>
-                <div className={styles.emailSignUp}>
-                  <p className={styles.emailHeading}>Join the Journey</p>
-                  <ConvertKit
-                    formId={process.env.GATSBY_FORM_ID}
-                    className={styles.emailForm}
-                    namePlaceholder="Name"
-                    emailPlaceholder="Email"
-                    submitText=" →"
-                  />
-                </div>
+                <Link to="/journal" className={styles.readLink}>
+                  Read the Journal &rarr;
+                </Link>
               </div>
             </div>
           </div>

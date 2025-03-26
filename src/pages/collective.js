@@ -73,19 +73,41 @@ const Collective = ({ location, data }) => {
                   {member.websiteLink && (
                     <a
                       href={member.websiteLink}
+                      className={styles.instagramLink}
                       target="_blank"
                       rel="noreferrer"
                     >
-                      Website ↗&nbsp;
+                      Website{" "}
+                      <svg
+                        viewBox="0 0 7 7"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M6.5078 4.08228H5.6918V2.61828L5.7638 1.83828L5.7278 1.82628L4.9598 2.69028L0.927801 6.72228L0.3518 6.14628L4.3838 2.11428L5.2478 1.34628L5.2358 1.31028L4.4558 1.38228H2.9918V0.56628H6.5078V4.08228Z"
+                          fill="currentColor"
+                        />
+                      </svg>
                     </a>
                   )}
                   {member.instagramLink && (
                     <a
+                      className={styles.instagramLink}
                       href={member.instagramLink}
                       target="_blank"
                       rel="noreferrer"
                     >
-                      Instagram ↗&nbsp;
+                      Instagram{" "}
+                      <svg
+                        viewBox="0 0 7 7"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M6.5078 4.08228H5.6918V2.61828L5.7638 1.83828L5.7278 1.82628L4.9598 2.69028L0.927801 6.72228L0.3518 6.14628L4.3838 2.11428L5.2478 1.34628L5.2358 1.31028L4.4558 1.38228H2.9918V0.56628H6.5078V4.08228Z"
+                          fill="currentColor"
+                        />
+                      </svg>
                     </a>
                   )}
                 </div>
@@ -94,10 +116,10 @@ const Collective = ({ location, data }) => {
           </Fade>
         ))}
       </div>
-      <Fade triggerOnce={true}>
+      {/* <Fade triggerOnce={true}>
         <h2 className="heading center">Workshop Participants</h2>
-      </Fade>
-      <div className={styles.participantContainer}>
+      </Fade> */}
+      {/* <div className={styles.participantContainer}>
         {workshopParticipants.map((member, index) => (
           <Fade triggerOnce={true} key={index}>
             <div className={styles.participant}>
@@ -130,7 +152,7 @@ const Collective = ({ location, data }) => {
             </div>
           </Fade>
         ))}
-      </div>
+      </div> */}
     </div>
   )
 }

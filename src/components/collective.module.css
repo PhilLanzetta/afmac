@@ -111,6 +111,17 @@
   flex-direction: column;
 }
 
+.instagramLink {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.instagramLink svg {
+  height: calc(1rem * 0.8);
+  width: calc(1rem * 0.8);
+}
+
 @media screen and (max-width: 900px) {
   .memberName {
     display: none;
@@ -126,7 +137,8 @@
   }
 
   .memberHeadshot {
-    width: 50%;
+    flex-grow: 1;
+    max-width: 50%;
     border-radius: 20px;
   }
 

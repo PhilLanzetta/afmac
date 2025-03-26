@@ -106,6 +106,7 @@
   min-height: 80px;
   display: grid;
   place-items: center;
+  width: 100%;
 }
 
 @media screen and (max-width: 750px) {
@@ -120,5 +121,18 @@
   .highlightText {
     width: 100%;
     gap: 20px;
+  }
+
+  .supplementalContainer {
+    column-count: 2;
+  }
+
+  .multipleHighlightContainer {
+    width: 100%;
+  }
+
+  .workshopHighlightsContainer {
+    gap: 40px;
+    margin: 40px 0;
   }
 }

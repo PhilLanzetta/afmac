@@ -36,6 +36,7 @@
   margin-top: 80px;
   display: block;
   text-transform: uppercase;
+  text-align: right;
 }
 
 .table > div {
@@ -88,6 +89,19 @@
   padding: 10px;
   border-radius: 5px;
   border-width: 1px;
+  border-style: solid;
+  border-color: #000;
+}
+
+.emailForm input:focus {
+  outline: 1px solid gray;
+}
+
+.emailForm input:-webkit-autofill,
+.emailForm input:-webkit-autofill:hover,
+.emailForm input:-webkit-autofill:focus,
+.emailForm input:-webkit-autofill:active {
+   -webkit-box-shadow: 0 0 0px 1000px white inset;
 }
 
 @media screen and (max-width: 800px) {
@@ -106,6 +120,7 @@
 
   .readLink {
     margin-top: 20px;
+    text-align: left;
   }
 
   .homeVideo {
@@ -116,8 +131,8 @@
 
 @media screen and (max-width: 600px) {
   .row {
-  grid-template-columns: 1fr 1fr;
-}
+    grid-template-columns: 1fr 1fr;
+  }
   .chapter,
   .location {
     grid-column-start: 1;
