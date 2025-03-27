@@ -7,12 +7,8 @@ import VideoPlayer from "../components/videoPlayer"
 
 const Supplemental = ({ location, data }) => {
   const [activeVideo, setActiveVideo] = useState(null)
-  const {
-    title,
-    supplementalLocation,
-    content,
-    date,
-  } = data.contentfulSupplementalContent
+  const { title, supplementalLocation, content, date } =
+    data.contentfulSupplementalContent
   return (
     <>
       <div className={styles.journalMain}>
@@ -43,23 +39,33 @@ const Supplemental = ({ location, data }) => {
           } else if (item.imageId) {
             return (
               <Fade triggerOnce={true} key={item.imageId}>
-                <GatsbyImage
-                  className={styles.imageModule}
-                  image={item.image.gatsbyImageData}
-                  alt={item.image.description}
-                ></GatsbyImage>
+                <figure className={styles.imageModuleFig}>
+                  <GatsbyImage
+                    className={styles.imageModule}
+                    image={item.image.gatsbyImageData}
+                    alt={item.image.description}
+                  ></GatsbyImage>
+                  {item.caption && (
+                    <div
+                      className={styles.imageModuleCaption}
+                      dangerouslySetInnerHTML={{
+                        __html: item.caption.childMarkdownRemark.html,
+                      }}
+                    ></div>
+                  )}
+                </figure>
               </Fade>
             )
           } else if (item.videoId) {
             return (
-                <div className={styles.videoContainer} key={item.videoId}>
-                  <VideoPlayer
-                    video={item}
-                    videoId={item.videoId}
-                    activeVideo={activeVideo}
-                    setActiveVideo={setActiveVideo}
-                  ></VideoPlayer>
-                </div>
+              <div className={styles.videoContainer} key={item.videoId}>
+                <VideoPlayer
+                  video={item}
+                  videoId={item.videoId}
+                  activeVideo={activeVideo}
+                  setActiveVideo={setActiveVideo}
+                ></VideoPlayer>
+              </div>
             )
           } else {
             return <div>Unknown Content</div>
@@ -78,6 +84,11 @@ export const query = graphql`
       content {
         ... on ContentfulImageModule {
           imageId: id
+          caption {
+            childMarkdownRemark {
+              html
+            }
+          }
           image {
             description
             gatsbyImageData(layout: FULL_WIDTH)

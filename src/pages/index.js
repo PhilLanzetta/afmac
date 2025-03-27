@@ -15,9 +15,7 @@ const Index = ({ location, data }) => {
     data.contentfulHomePage
 
   const confirmed = location.hash === "#confirmed"
-  console.log(confirmed)
-
-  console.log(location)
+  
   useEffect(() => {
     const body = document.body
     if (loading === true) {

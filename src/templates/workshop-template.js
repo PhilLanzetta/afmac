@@ -66,6 +66,14 @@ const Workshop = ({ location, data }) => {
                   image={item.image.gatsbyImageData}
                   alt={item.image.description}
                 ></GatsbyImage>
+                {item.caption && (
+                  <div
+                    className={styles.imageModuleCaption}
+                    dangerouslySetInnerHTML={{
+                      __html: item.caption.childMarkdownRemark.html,
+                    }}
+                  ></div>
+                )}
               </Fade>
             )
           } else if (item.videoId) {
@@ -146,6 +154,11 @@ export const query = graphql`
           image {
             description
             gatsbyImageData(layout: FULL_WIDTH)
+          }
+          caption {
+            childMarkdownRemark {
+              html
+            }
           }
         }
         ... on ContentfulTextModule {
