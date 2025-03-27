@@ -39,9 +39,8 @@ const Supplemental = ({ location, data }) => {
           } else if (item.imageId) {
             return (
               <Fade triggerOnce={true} key={item.imageId}>
-                <figure className={styles.imageModuleFig}>
                   <GatsbyImage
-                    className={styles.imageModule}
+                    className={item.caption ? styles.imageModuleWithCaption : styles.imageModule}
                     image={item.image.gatsbyImageData}
                     alt={item.image.description}
                   ></GatsbyImage>
@@ -53,7 +52,6 @@ const Supplemental = ({ location, data }) => {
                       }}
                     ></div>
                   )}
-                </figure>
               </Fade>
             )
           } else if (item.videoId) {
