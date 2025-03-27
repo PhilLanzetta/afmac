@@ -5,7 +5,7 @@ import { GatsbyImage } from "gatsby-plugin-image"
 import { Fade } from "react-awesome-reveal"
 
 const About = ({ data, location }) => {
-  const { aboutText, artCarText, leadership, headlineText, partnerLogos } =
+  const { aboutText, artCarText, leadership, headlineText, partnerLogos, artCarImage } =
     data.contentfulAboutPage
   return (
     <div className={styles.aboutMain}>
@@ -50,12 +50,20 @@ const About = ({ data, location }) => {
       ))}
       <Fade triggerOnce={true}>
         <div className={styles.artCarContainer}>
-          <div
-            dangerouslySetInnerHTML={{
-              __html: artCarText.childMarkdownRemark.html,
-            }}
-            className={styles.artCarText}
-          ></div>
+          <p className="heading">BMW Group Culture</p>
+          <div className={styles.artistInfo}>
+            <GatsbyImage
+              image={artCarImage.gatsbyImageData}
+              alt={artCarImage.description}
+              className={styles.headshot}
+            ></GatsbyImage>
+            <div
+              dangerouslySetInnerHTML={{
+                __html: artCarText.childMarkdownRemark.html,
+              }}
+              className={styles.bio}
+            ></div>
+          </div>
         </div>
       </Fade>
       <Fade triggerOnce={true}>
@@ -87,6 +95,10 @@ export const query = graphql`
         childMarkdownRemark {
           html
         }
+      }
+      artCarImage {
+        description
+        gatsbyImageData(layout: FULL_WIDTH)
       }
       leadership {
         bio {
