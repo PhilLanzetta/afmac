@@ -95,10 +95,11 @@
 .emailForm input {
   width: 50%;
   padding: 10px;
-  border-radius: 5px;
   border-width: 1px;
   border-style: solid;
   border-color: #000;
+  font-family: "Sohne Kraftig", sans-serif;
+  font-size: 1rem;
 }
 
 .emailForm input:focus {

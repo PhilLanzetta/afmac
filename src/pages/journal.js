@@ -11,7 +11,50 @@ const Journal = ({ location, data }) => {
   const [supplemental, setSupplemental] = useState(
     data.allContentfulSupplementalContent.nodes
   )
-  const tags = data.allContentfulTag.nodes
+  const [locationActiveButton, setLocationActiveButton] = useState()
+  const [artistActiveButton, setArtistActiveButton] = useState()
+
+  const locations = data.allContentfulWorkshopEntry.nodes.map(
+    node => node.location
+  )
+  const artists = data.allContentfulSupplementalContent.nodes
+    .map(node => node.artist)
+    .filter(item => item !== null)
+
+  const contentFilter = (type, value, index) => {
+    if (type === "location") {
+      if (locationActiveButton === index) {
+        setWorkshop(data.allContentfulWorkshopEntry.nodes)
+        setLocationActiveButton()
+      } else {
+        setLocationActiveButton(index)
+        setArtistActiveButton()
+        setWorkshop(
+          data.allContentfulWorkshopEntry.nodes.filter(
+            item => item.location === value
+          )
+        )
+        setSupplemental(data.allContentfulSupplementalContent.nodes)
+      }
+    } else {
+      if (artistActiveButton === index) {
+        setSupplemental(data.allContentfulSupplementalContent.nodes)
+        setArtistActiveButton()
+      } else {
+        setArtistActiveButton(index)
+        setLocationActiveButton()
+        const artistFirst = data.allContentfulSupplementalContent.nodes.filter(
+          node => node.artist === value
+        )
+        const everythingElse =
+          data.allContentfulSupplementalContent.nodes.filter(
+            node => node.artist !== value
+          )
+        setSupplemental(artistFirst.concat(everythingElse))
+        setWorkshop(data.allContentfulWorkshopEntry.nodes)
+      }
+    }
+  }
 
   return (
     <div className={styles.journalMain}>
@@ -20,9 +63,26 @@ const Journal = ({ location, data }) => {
       </Fade>
       <Fade triggerOnce={true}>
         <div className={styles.tagContainer}>
-          {tags.map(tag => (
-            <button className={styles.tagButton}>
-              {tag.name.split(": ")[1]}
+          {locations.map((location, index) => (
+            <button
+              className={`${styles.tagButton} ${
+                locationActiveButton === index ? styles.activeTagButton : ""
+              }`}
+              key={index}
+              onClick={() => contentFilter("location", location, index)}
+            >
+              {location}
+            </button>
+          ))}
+          {artists.map((artist, index) => (
+            <button
+              className={`${styles.tagButton} ${
+                artistActiveButton === index ? styles.activeTagButton : ""
+              }`}
+              key={index}
+              onClick={() => contentFilter("artist", artist, index)}
+            >
+              {artist}
             </button>
           ))}
         </div>
@@ -112,13 +172,6 @@ const Journal = ({ location, data }) => {
 
 export const query = graphql`
   query {
-    allContentfulTag {
-      nodes {
-        id
-        name
-        contentful_id
-      }
-    }
     allContentfulWorkshopEntry {
       nodes {
         id
@@ -127,13 +180,6 @@ export const query = graphql`
         tileImage {
           description
           gatsbyImageData(layout: FULL_WIDTH)
-        }
-        metadata {
-          tags {
-            id
-            name
-            contentful_id
-          }
         }
         introText {
           childMarkdownRemark {
@@ -164,16 +210,8 @@ export const query = graphql`
           }
         }
         date
-        medium
         title
         artist
-        metadata {
-          tags {
-            id
-            name
-            contentful_id
-          }
-        }
       }
     }
   }

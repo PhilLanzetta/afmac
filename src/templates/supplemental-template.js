@@ -39,19 +39,23 @@ const Supplemental = ({ location, data }) => {
           } else if (item.imageId) {
             return (
               <Fade triggerOnce={true} key={item.imageId}>
-                  <GatsbyImage
-                    className={item.caption ? styles.imageModuleWithCaption : styles.imageModule}
-                    image={item.image.gatsbyImageData}
-                    alt={item.image.description}
-                  ></GatsbyImage>
-                  {item.caption && (
-                    <div
-                      className={styles.imageModuleCaption}
-                      dangerouslySetInnerHTML={{
-                        __html: item.caption.childMarkdownRemark.html,
-                      }}
-                    ></div>
-                  )}
+                <GatsbyImage
+                  className={
+                    item.caption
+                      ? styles.imageModuleWithCaption
+                      : styles.imageModule
+                  }
+                  image={item.image.gatsbyImageData}
+                  alt={item.image.description}
+                ></GatsbyImage>
+                {item.caption && (
+                  <div
+                    className={styles.imageModuleCaption}
+                    dangerouslySetInnerHTML={{
+                      __html: item.caption.childMarkdownRemark.html,
+                    }}
+                  ></div>
+                )}
               </Fade>
             )
           } else if (item.videoId) {
@@ -99,14 +103,6 @@ export const query = graphql`
               html
             }
           }
-        }
-        ... on ContentfulVideoModule {
-          videoId: id
-          posterImage {
-            description
-            gatsbyImageData
-          }
-          videoLink
         }
       }
       date

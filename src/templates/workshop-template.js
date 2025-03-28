@@ -115,34 +115,6 @@ export const query = graphql`
     contentfulWorkshopEntry(slug: { eq: $slug }) {
       title
       workshopLocation: location
-      relatedContent {
-        tileDisplay {
-          ... on ContentfulImageModule {
-            imageDisplayId: id
-            image {
-              description
-              gatsbyImageData
-            }
-          }
-          ... on ContentfulTextModule {
-            textDisplayId: id
-            text {
-              childMarkdownRemark {
-                html
-              }
-            }
-          }
-        }
-        id
-        date
-        metadata {
-          tags {
-            name
-            id
-            contentful_id
-          }
-        }
-      }
       introText {
         childMarkdownRemark {
           html

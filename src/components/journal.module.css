@@ -29,6 +29,13 @@
   transition: all 400ms;
 }
 
+.activeTagButton {
+  background: #838383;
+  color: #fff;
+  border: 1px solid #838383;
+  transition: all 400ms;
+}
+
 .workshopHighlight {
   font-family: "Sohne Kraftig", sans-serif;
   display: flex;
