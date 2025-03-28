@@ -128,6 +128,14 @@ const Footer = () => {
           </div>
         </div>
       </div>
+      <a
+        href="https://pacificpacific.studio"
+        target="_blank"
+        rel="noreferrer"
+        className={styles.footerCredit}
+      >
+        Site Credit
+      </a>
     </div>
   )
 }

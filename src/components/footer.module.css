@@ -64,6 +64,15 @@ a.footerLogo:hover {
   padding: 0 30%;
 }
 
+.footerCredit {
+  font-family: "Sohne", sans-serif;
+  font-size: calc(1rem * 0.8);
+  color: #8b8680;
+  margin-top: 20px;
+  display: inline-block;
+  padding-left: 40px;
+}
+
 @media screen and (max-width: 800px) {
   .footerContainer {
     flex-direction: column;
@@ -75,6 +84,11 @@ a.footerLogo:hover {
   width: 100%;
   justify-content: space-between;
 }
+
+.footerCredit {
+  padding-left: 20px;
+}
+
 }
 
 @media screen and (max-width: 600px) {

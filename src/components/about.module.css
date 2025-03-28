@@ -53,16 +53,17 @@
 }
 
 .logoContainer {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  display: flex;
+  flex-wrap: wrap;
   width: 100%;
   align-items: center;
-  gap: 20px;
+  justify-content: center;
+  gap: clamp(30px, 5%, 100px);
   margin-top: 80px;
 }
 
 .logo {
-  width: 100%;
+  width: clamp(80px, 12%, 200px);
 }
 
 @media screen and (max-width: 750px) {
@@ -105,6 +106,6 @@
   }
 
   .logoContainer {
-    grid-template-columns: repeat(2, 1fr);
+    margin-top: 40px;
   }
 }

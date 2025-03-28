@@ -7,15 +7,20 @@ import Seo from "../components/seo"
 import * as styles from "../components/index.module.css"
 import VideoPlayer from "../components/videoPlayer"
 import ConvertKit from "convertkit-react"
+import useWindowSize from "../utils/useWindowSize"
 
 const Index = ({ location, data }) => {
   const [loading, setLoading] = useState(true)
   const [activeVideo, setActiveVideo] = useState(null)
-  const { homeVideo, workshopDescription, workshopTable } =
+  const { homeVideo, homeVideoMobile, workshopDescription, workshopTable } =
     data.contentfulHomePage
 
   const confirmed = location.hash === "#confirmed"
-  
+
+  const { width, height } = useWindowSize()
+
+  const isMobile = height > width
+
   useEffect(() => {
     const body = document.body
     if (loading === true) {
@@ -64,8 +69,8 @@ const Index = ({ location, data }) => {
           <VideoPlayer
             activeVideo={activeVideo}
             setActiveVideo={setActiveVideo}
-            video={homeVideo}
-            videoId={homeVideo.id}
+            video={isMobile ? homeVideoMobile : homeVideo}
+            videoId={isMobile ? homeVideoMobile.id : homeVideo.id}
           ></VideoPlayer>
         </div>
         <Fade triggerOnce={true}>
@@ -129,6 +134,15 @@ export const query = graphql`
   query {
     contentfulHomePage {
       homeVideo {
+        aspectRatio
+        id
+        videoLink
+        posterImage {
+          description
+          gatsbyImageData(layout: FULL_WIDTH)
+        }
+      }
+      homeVideoMobile {
         aspectRatio
         id
         videoLink
