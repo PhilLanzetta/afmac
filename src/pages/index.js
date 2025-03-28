@@ -71,6 +71,7 @@ const Index = ({ location, data }) => {
             setActiveVideo={setActiveVideo}
             video={isMobile ? homeVideoMobile : homeVideo}
             videoId={isMobile ? homeVideoMobile.id : homeVideo.id}
+            isHome={true}
           ></VideoPlayer>
         </div>
         <Fade triggerOnce={true}>

@@ -62,3 +62,39 @@
   right: 20px;
   cursor: pointer;
 }
+
+.homeVideoMute {
+  position: absolute;
+  right: 3vw;
+  bottom: 3vw;
+  display: flex;
+  height: 30px;
+  width: 30px;
+  align-items: flex-end;
+  justify-content: flex-end;
+  z-index: 1000;
+  cursor: pointer;
+}
+
+.homeVideoSound {
+  position: absolute;
+  right: 3vw;
+  bottom: 3vw;
+  display: flex;
+  height: 30px;
+  width: 30px;
+  align-items: flex-end;
+  justify-content: flex-end;
+  z-index: 1000;
+  cursor: pointer;
+}
+
+.homeVideoMute svg {
+  height: clamp(15px, 2vw, 24px);
+  width: clamp(15px, 2vw, 24px);
+}
+
+.homeVideoSound svg {
+  height: clamp(20px, 2vw, 30px);
+  width: clamp(20px, 2vw, 30px);
+}

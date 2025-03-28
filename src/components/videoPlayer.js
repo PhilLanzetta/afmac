@@ -14,7 +14,13 @@ import useOnScreen from "../utils/useOnScreen"
 
 let count = 25
 
-const VideoPlayer = ({ video, videoId, activeVideo, setActiveVideo }) => {
+const VideoPlayer = ({
+  video,
+  videoId,
+  activeVideo,
+  setActiveVideo,
+  isHome,
+}) => {
   const videoPlayerRef = useRef(null)
   const controlRef = useRef(null)
   const fullScreenRef = useRef(null)
@@ -221,7 +227,7 @@ const VideoPlayer = ({ video, videoId, activeVideo, setActiveVideo }) => {
           height={"100%"}
           className={styles.videoPlayerVideo}
           progressInterval={100}
-          controls={isMobile}
+          controls={isMobile && !isHome}
           playing={playing}
           playsinline
           onPlay={() => {
@@ -263,6 +269,92 @@ const VideoPlayer = ({ video, videoId, activeVideo, setActiveVideo }) => {
             currentTime={formatCurrentTime}
             onMouseSeekDown={onSeekMouseDownHandler}
           ></Control>
+        )}
+        {isMobile && isHome && (
+          <button
+            onClick={() =>
+              setVideoState({
+                ...videoState,
+                muted: !videoState.muted,
+                volume: 1,
+              })
+            }
+            className={muted ? styles.homeVideoMute : styles.homeVideoSound}
+          >
+            {muted ? (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 10.906 14.541"
+              >
+                <g id="Group_61" data-name="Group 61" transform="translate(0)">
+                  <path
+                    id="Path_2"
+                    data-name="Path 2"
+                    d="M-3496-19960.061h3.378l4.777-4.1h1.053v14.541h-1.229l-2.73-2.23-1.872-1.52H-3496Z"
+                    transform="translate(3496 19964.156)"
+                    fill="currentColor"
+                  />
+                  <ellipse
+                    id="Ellipse_5"
+                    data-name="Ellipse 5"
+                    cx="2.337"
+                    cy="2.337"
+                    rx="2.337"
+                    ry="2.337"
+                    transform="translate(6.232 4.674)"
+                    fill="currentColor"
+                  />
+                  <ellipse
+                    id="Ellipse_6"
+                    data-name="Ellipse 6"
+                    cx="2.337"
+                    cy="2.337"
+                    rx="2.337"
+                    ry="2.337"
+                    transform="translate(6.232 4.674)"
+                    fill="currentColor"
+                  />
+                </g>
+              </svg>
+            ) : (
+              <svg
+                viewBox="0 0 35 31"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g clip-path="url(#clip0_19_13)">
+                  <path
+                    d="M7 10.323H13.1946L21.9551 2.99268H23.8861V28.9927H21.6323L16.6259 25.0045L13.1928 22.2875H7V10.323Z"
+                    fill="currentColor"
+                  />
+                  <path
+                    d="M22.7134 19.7148C25.0804 19.7148 26.9992 17.8439 26.9992 15.5361C26.9992 13.2283 25.0804 11.3574 22.7134 11.3574C20.3465 11.3574 18.4277 13.2283 18.4277 15.5361C18.4277 17.8439 20.3465 19.7148 22.7134 19.7148Z"
+                    fill="currentColor"
+                  />
+                  <path
+                    d="M22.7134 19.7148C25.0804 19.7148 26.9992 17.8439 26.9992 15.5361C26.9992 13.2283 25.0804 11.3574 22.7134 11.3574C20.3465 11.3574 18.4277 13.2283 18.4277 15.5361C18.4277 17.8439 20.3465 19.7148 22.7134 19.7148Z"
+                    fill="currentColor"
+                  />
+                </g>
+                <rect
+                  width="44.2055"
+                  height="1.76822"
+                  transform="matrix(-0.766044 -0.642788 -0.642788 0.766044 35 29)"
+                  fill="currentColor"
+                />
+                <defs>
+                  <clipPath id="clip0_19_13">
+                    <rect
+                      width="20"
+                      height="26"
+                      fill="white"
+                      transform="translate(7 3)"
+                    />
+                  </clipPath>
+                </defs>
+              </svg>
+            )}
+          </button>
         )}
         {!isMobile && (
           <button
