@@ -77,7 +77,7 @@ const VideoPlayer = ({
   }
 
   const progressHandler = state => {
-    if (count > 10) {
+    if (count > 5) {
       controlRef.current.style.visibility = "hidden"
       fullScreenRef.current.style.visibility = "hidden" // toggling player control container
     } else {

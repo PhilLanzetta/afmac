@@ -159,7 +159,7 @@ const Journal = ({ location, data }) => {
                     month: "long",
                     day: "numeric",
                     year: "numeric",
-                    timeZone: "America/New_York",
+                    timeZone: "Europe/London",
                   })}
                 </p>
               </div>
@@ -199,14 +199,6 @@ export const query = graphql`
             image {
               description
               gatsbyImageData
-            }
-          }
-          ... on ContentfulTextModule {
-            textDisplayId: id
-            text {
-              childMarkdownRemark {
-                html
-              }
             }
           }
         }
