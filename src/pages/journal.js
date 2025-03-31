@@ -172,7 +172,7 @@ const Journal = ({ location, data }) => {
 
 export const query = graphql`
   query {
-    allContentfulWorkshopEntry {
+    allContentfulWorkshopEntry(sort: { date: ASC }) {
       nodes {
         id
         location
