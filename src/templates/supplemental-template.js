@@ -21,6 +21,7 @@ const Supplemental = ({ location, data }) => {
             {new Date(date).toLocaleDateString("en-US", {
               month: "long",
               year: "numeric",
+              timeZone: "America/New_York",
             })}
           </p>
         </Fade>

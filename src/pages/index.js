@@ -114,6 +114,7 @@ const Index = ({ location, data }) => {
                         {new Date(item.date).toLocaleDateString("en-US", {
                           month: "long",
                           year: "numeric",
+                          timeZone: "America/New_York"
                         })}
                       </p>
                     </div>

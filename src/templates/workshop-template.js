@@ -35,6 +35,7 @@ const Workshop = ({ location, data }) => {
             {new Date(date).toLocaleDateString("en-US", {
               month: "long",
               year: "numeric",
+              timeZone: "America/New_York",
             })}
           </p>
         </Fade>
@@ -62,7 +63,11 @@ const Workshop = ({ location, data }) => {
             return (
               <Fade triggerOnce={true} key={item.imageId}>
                 <GatsbyImage
-                  className={item.caption ? styles.imageModuleWithCaption : styles.imageModule}
+                  className={
+                    item.caption
+                      ? styles.imageModuleWithCaption
+                      : styles.imageModule
+                  }
                   image={item.image.gatsbyImageData}
                   alt={item.image.description}
                 ></GatsbyImage>

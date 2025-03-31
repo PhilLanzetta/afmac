@@ -159,6 +159,7 @@ const Journal = ({ location, data }) => {
                     month: "long",
                     day: "numeric",
                     year: "numeric",
+                    timeZone: "America/New_York",
                   })}
                 </p>
               </div>
