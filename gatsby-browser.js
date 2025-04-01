@@ -13,6 +13,16 @@ export const shouldUpdateScroll = ({
     prevRouterProps &&
     prevRouterProps.location.pathname === location.pathname
   ) {
+    if (location.hash) {
+      const target = document.getElementById(location.hash.slice(1))
+      const targetPosition =
+        target.getBoundingClientRect().top - 250 + window.scrollY
+      window.history.scrollRestoration = "manual"
+      window.setTimeout(() => window.scrollTo({ top: targetPosition }), 10)
+    } else {
+      window.history.scrollRestoration = "manual"
+      window.setTimeout(() => window.scrollTo(0, 0), TRANSITION_DELAY)
+    }
     return true
   }
   if (location.action === "PUSH") {
