@@ -146,14 +146,6 @@ export const query = graphql`
             }
           }
         }
-        ... on ContentfulVideoModule {
-          videoId: id
-          posterImage {
-            description
-            gatsbyImageData
-          }
-          videoLink
-        }
       }
       date
       tileImage {
