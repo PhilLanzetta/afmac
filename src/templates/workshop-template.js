@@ -47,7 +47,7 @@ const Workshop = ({ location, data }) => {
             className={styles.textModule}
           ></div>
         </Fade>
-        {content.map(item => {
+        {content?.map(item => {
           if (item.textId) {
             return (
               <Fade triggerOnce={true} key={item.textId}>
