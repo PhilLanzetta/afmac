@@ -10,12 +10,11 @@ import ConvertKit from "convertkit-react"
 import useWindowSize from "../utils/useWindowSize"
 
 const Index = ({ location, data }) => {
-  const [loading, setLoading] = useState(true)
+  const confirmed = location.hash === "#confirmed"
+  const [loading, setLoading] = useState(confirmed ? false : true)
   const [activeVideo, setActiveVideo] = useState(null)
   const { homeVideo, homeVideoMobile, workshopDescription, workshopTable } =
     data.contentfulHomePage
-
-  const confirmed = location.hash === "#confirmed"
 
   const { width, height } = useWindowSize()
 
