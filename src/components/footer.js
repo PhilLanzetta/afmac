@@ -18,7 +18,9 @@ const Footer = () => {
           </div>
           <div className={styles.footerColumn}>
             <p className={styles.footerUpper}>Contact</p>
-            <a href="mailto:sampleemail@gmail.com">Email</a>
+            <a href="https://afmac.kit.com" target="_blank" rel="noreferrer">
+              Email
+            </a>
           </div>
           <div className={styles.footerColumn}>
             <p className={styles.footerUpper}>Social</p>
