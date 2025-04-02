@@ -5,7 +5,7 @@ import { GatsbyImage } from "gatsby-plugin-image"
 import { Fade } from "react-awesome-reveal"
 
 const About = ({ data, location }) => {
-  const { aboutText, artCarText, leadership, headlineText, partnerLogos, artCarImage } =
+  const { aboutText, artCarText, leadership, headlineText, artCarImage, partners } =
     data.contentfulAboutPage
   return (
     <div className={styles.aboutMain}>
@@ -69,13 +69,19 @@ const About = ({ data, location }) => {
       <Fade triggerOnce={true}>
         <p className="heading center">Partners</p>
         <div className={styles.logoContainer}>
-          {partnerLogos.map((logo, index) => (
-            <GatsbyImage
-              image={logo.gatsbyImageData}
-              key={index}
-              alt={logo.description}
+          {partners.map((partner, index) => (
+            <a
+              href={partner.link}
+              target="_blank"
+              rel="noreferrer"
               className={styles.logo}
-            ></GatsbyImage>
+            >
+              <GatsbyImage
+                image={partner.logo.gatsbyImageData}
+                key={index}
+                alt={partner.logo.description}
+              ></GatsbyImage>
+            </a>
           ))}
         </div>
       </Fade>
@@ -117,9 +123,12 @@ export const query = graphql`
           html
         }
       }
-      partnerLogos {
-        description
-        gatsbyImageData(layout: FULL_WIDTH)
+      partners {
+        link
+        logo {
+          description
+          gatsbyImageData(layout: FULL_WIDTH)
+        }
       }
     }
   }
