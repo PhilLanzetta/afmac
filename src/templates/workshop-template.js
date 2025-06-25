@@ -83,14 +83,14 @@ const Workshop = ({ location, data }) => {
             )
           } else if (item.videoId) {
             return (
-              <div className={styles.videoContainer} key={item.videoId}>
+              <Fade triggerOnce={true} className={styles.videoContainer} key={item.videoId}>
                 <VideoPlayer
                   video={item}
                   videoId={item.videoId}
                   activeVideo={activeVideo}
                   setActiveVideo={setActiveVideo}
                 ></VideoPlayer>
-              </div>
+              </Fade>
             )
           } else {
             return <div>Unknown Content</div>
@@ -137,6 +137,15 @@ export const query = graphql`
               html
             }
           }
+        }
+        ... on ContentfulVideoModule {
+          videoId: id
+          aspectRatio
+          posterImage {
+            description
+            gatsbyImageData
+          }
+          videoLink
         }
         ... on ContentfulTextModule {
           textId: id

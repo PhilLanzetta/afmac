@@ -55,6 +55,7 @@
 .videoContainer {
   border-radius: 20px;
   overflow: hidden;
+  margin-bottom: 80px;
 }
 
 .relatedContainer {

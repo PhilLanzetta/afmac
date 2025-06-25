@@ -97,11 +97,13 @@ const Journal = ({ location, data }) => {
                   to={`/journal/${entry.slug}`}
                   className={styles.multipleHighlightContainer}
                 >
-                  <GatsbyImage
-                    image={entry.tileImage.gatsbyImageData}
-                    alt={entry.tileImage.description}
-                    className={styles.multipleHighlightImage}
-                  ></GatsbyImage>
+                  {entry.tileImage && (
+                    <GatsbyImage
+                      image={entry.tileImage.gatsbyImageData}
+                      alt={entry.tileImage.description}
+                      className={styles.multipleHighlightImage}
+                    ></GatsbyImage>
+                  )}
                   <p>{entry.location}</p>
                 </Link>
               ))}
