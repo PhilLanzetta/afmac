@@ -5,8 +5,16 @@ import { GatsbyImage } from "gatsby-plugin-image"
 import { Fade } from "react-awesome-reveal"
 
 const About = ({ data, location }) => {
-  const { aboutText, artCarText, leadership, headlineText, artCarImage, partners } =
-    data.contentfulAboutPage
+  const {
+    aboutText,
+    artCarText,
+    leadership,
+    headlineText,
+    artCarImage,
+    partners,
+    donateImage,
+    donateText,
+  } = data.contentfulAboutPage
   return (
     <div className={styles.aboutMain}>
       <Fade triggerOnce={true}>
@@ -85,6 +93,24 @@ const About = ({ data, location }) => {
           ))}
         </div>
       </Fade>
+      <Fade triggerOnce={true}>
+        <div className={styles.artCarContainer}>
+          <p className="heading">Donate</p>
+          <div className={styles.artistInfo}>
+            <GatsbyImage
+              image={donateImage.gatsbyImageData}
+              alt={donateImage.description}
+              className={styles.headshot}
+            ></GatsbyImage>
+            <div
+              dangerouslySetInnerHTML={{
+                __html: donateText.childMarkdownRemark.html,
+              }}
+              className={styles.bio}
+            ></div>
+          </div>
+        </div>
+      </Fade>
     </div>
   )
 }
@@ -102,7 +128,16 @@ export const query = graphql`
           html
         }
       }
+      donateText {
+        childMarkdownRemark {
+          html
+        }
+      }
       artCarImage {
+        description
+        gatsbyImageData(layout: FULL_WIDTH)
+      }
+      donateImage {
         description
         gatsbyImageData(layout: FULL_WIDTH)
       }
