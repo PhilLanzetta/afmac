@@ -5,7 +5,11 @@ exports.createPages = async ({ actions, graphql }) => {
 
   const result = await graphql(`
     query GetData {
-      allContentfulWorkshopEntry {
+      allContentfulWorkshopEntry(
+        filter: {
+          title: { ne: "Placeholder (do not delete)" }
+        }
+      ) {
         edges {
           node {
             slug
