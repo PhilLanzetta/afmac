@@ -96,7 +96,7 @@ const About = ({ data, location }) => {
       {donateText && (
         <Fade triggerOnce={true}>
           <div className={styles.artCarContainer}>
-            <p className="heading">Donate</p>
+            <p className="heading">Support</p>
             <div className={styles.artistInfo}>
               <GatsbyImage
                 image={donateImage.gatsbyImageData}
