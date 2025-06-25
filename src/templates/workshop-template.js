@@ -83,13 +83,41 @@ const Workshop = ({ location, data }) => {
             )
           } else if (item.videoId) {
             return (
-              <Fade triggerOnce={true} className={styles.videoContainer} key={item.videoId}>
+              <Fade
+                triggerOnce={true}
+                className={styles.videoContainer}
+                key={item.videoId}
+              >
                 <VideoPlayer
                   video={item}
                   videoId={item.videoId}
                   activeVideo={activeVideo}
                   setActiveVideo={setActiveVideo}
                 ></VideoPlayer>
+              </Fade>
+            )
+          } else if (item.twoColumnId) {
+            return (
+              <Fade triggerOnce={true} key={item.twoColumnId}>
+                <div className={styles.twoColumn}>
+                  {item.images.map(image => (
+                    <div key={image.id} className={styles.twoColumnImage}>
+                      <GatsbyImage
+                        image={image.image.gatsbyImageData}
+                        alt={image.image.description}
+                        className={styles.twoColumnImage}
+                      ></GatsbyImage>
+                      {image.caption && (
+                        <div
+                          dangerouslySetInnerHTML={{
+                            __html: image.caption.childMarkdownRemark.html,
+                          }}
+                          className={styles.twoColumnCaption}
+                        ></div>
+                      )}
+                    </div>
+                  ))}
+                </div>
               </Fade>
             )
           } else {
@@ -152,6 +180,21 @@ export const query = graphql`
           text {
             childMarkdownRemark {
               html
+            }
+          }
+        }
+        ... on ContentfulTwoColumnImage {
+          twoColumnId: id
+          images {
+            caption {
+              childMarkdownRemark {
+                html
+              }
+            }
+            id
+            image {
+              description
+              gatsbyImageData
             }
           }
         }
