@@ -93,24 +93,26 @@ const About = ({ data, location }) => {
           ))}
         </div>
       </Fade>
-      <Fade triggerOnce={true}>
-        <div className={styles.artCarContainer}>
-          <p className="heading">Donate</p>
-          <div className={styles.artistInfo}>
-            <GatsbyImage
-              image={donateImage.gatsbyImageData}
-              alt={donateImage.description}
-              className={styles.headshot}
-            ></GatsbyImage>
-            <div
-              dangerouslySetInnerHTML={{
-                __html: donateText.childMarkdownRemark.html,
-              }}
-              className={styles.bio}
-            ></div>
+      {donateText && (
+        <Fade triggerOnce={true}>
+          <div className={styles.artCarContainer}>
+            <p className="heading">Donate</p>
+            <div className={styles.artistInfo}>
+              <GatsbyImage
+                image={donateImage.gatsbyImageData}
+                alt={donateImage.description}
+                className={styles.headshot}
+              ></GatsbyImage>
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: donateText.childMarkdownRemark.html,
+                }}
+                className={styles.bio}
+              ></div>
+            </div>
           </div>
-        </div>
-      </Fade>
+        </Fade>
+      )}
     </div>
   )
 }
