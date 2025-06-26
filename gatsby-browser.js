@@ -1,3 +1,5 @@
+import "slick-carousel/slick/slick.css"
+import "slick-carousel/slick/slick-theme.css"
 import "./src/css/global.css"
 
 export const shouldUpdateScroll = ({

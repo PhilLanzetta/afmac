@@ -1,0 +1,71 @@
+.sliderContainer {
+ position: relative;
+}
+
+.slide {
+ margin-right: 20px;
+}
+
+.slideContainer {
+ display: flex;
+}
+
+.slideContainer figure {
+ height: 100%;
+}
+
+.imageBorder {
+ border-radius: 20px;
+}
+
+.slideContainer figcaption {
+ margin-top: 10px;
+ font-family: var(--font-secondary);
+ font-variant-numeric: normal;
+ font-size: var(--caption);
+ padding-right: 20px;
+}
+
+.nextArrow,
+.previousArrow {
+ position: absolute;
+ top: -50px;
+ transform: translateY(-50%);
+ height: 20px;
+ width: 20px;
+ cursor: pointer;
+ z-index: 10;
+}
+
+.nextArrow {
+ right: 0;
+}
+
+.previousArrow {
+ right: 110px;
+}
+
+.carouselSVG {
+ height: 100%;
+ width: 100%;
+}
+
+.slideCount {
+ position: absolute;
+ top: -50px;
+ transform: translateY(-50%);
+ right: 33px;
+ font-size: var(--caption);
+}
+
+@media screen and (max-width: 1000px) {
+ .nextArrow,
+ .previousArrow,
+ .slideCount {
+   top: -40px;
+ }
+
+ .slideCount {
+   right: 35px;
+ }
+}

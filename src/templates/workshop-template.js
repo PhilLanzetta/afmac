@@ -4,6 +4,7 @@ import { Fade } from "react-awesome-reveal"
 import * as styles from "../components/journalEntry.module.css"
 import { GatsbyImage } from "gatsby-plugin-image"
 import VideoPlayer from "../components/videoPlayer"
+import VariedWidthCarousel from "../components/variedWidthCarousel"
 
 const Workshop = ({ location, data }) => {
   const [activeVideo, setActiveVideo] = useState(null)
@@ -120,6 +121,10 @@ const Workshop = ({ location, data }) => {
                 </div>
               </Fade>
             )
+          } else if (item.slideshowId) {
+            return (
+              <VariedWidthCarousel images={item.images}></VariedWidthCarousel>
+            )
           } else {
             return <div>Unknown Content</div>
           }
@@ -195,6 +200,23 @@ export const query = graphql`
             image {
               description
               gatsbyImageData
+            }
+          }
+        }
+        ... on ContentfulImageSlideshow {
+          slideshowId: id
+          images {
+            id
+            caption {
+              childMarkdownRemark {
+                html
+              }
+            }
+            image {
+              description
+              gatsbyImageData
+              height
+              width
             }
           }
         }
