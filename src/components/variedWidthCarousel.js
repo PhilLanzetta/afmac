@@ -101,7 +101,7 @@ const VariedWidthCarousel = ({ images }) => {
                     image={image.image?.gatsbyImageData}
                     alt={image.image?.description}
                     style={{ height: "50vh", width: `${imgWidth}vh` }}
-                    className={styles.imageBorder}
+                    className={image.roundedCorners ? styles.imageBorder : ""}
                   ></GatsbyImage>
                   <figcaption
                     dangerouslySetInnerHTML={{

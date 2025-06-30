@@ -69,6 +69,7 @@ const Workshop = ({ location, data }) => {
                       ? styles.imageModuleWithCaption
                       : styles.imageModule
                   }
+                  style={{ borderRadius: item.roundedCorners ? "20px" : "0px" }}
                   image={item.image.gatsbyImageData}
                   alt={item.image.description}
                 ></GatsbyImage>
@@ -87,6 +88,7 @@ const Workshop = ({ location, data }) => {
               <Fade
                 triggerOnce={true}
                 className={styles.videoContainer}
+                style={{ borderRadius: item.roundedCorners ? "20px" : "0px" }}
                 key={item.videoId}
               >
                 <VideoPlayer
@@ -107,6 +109,9 @@ const Workshop = ({ location, data }) => {
                         image={image.image.gatsbyImageData}
                         alt={image.image.description}
                         className={styles.twoColumnImage}
+                        style={{
+                          borderRadius: item.roundedCorners ? "20px" : "0px",
+                        }}
                       ></GatsbyImage>
                       {image.caption && (
                         <div
@@ -165,6 +170,7 @@ export const query = graphql`
             description
             gatsbyImageData(layout: FULL_WIDTH)
           }
+          roundedCorners
           caption {
             childMarkdownRemark {
               html
@@ -179,6 +185,7 @@ export const query = graphql`
             gatsbyImageData
           }
           videoLink
+          roundedCorners
         }
         ... on ContentfulTextModule {
           textId: id
@@ -201,6 +208,7 @@ export const query = graphql`
               description
               gatsbyImageData
             }
+            roundedCorners
           }
         }
         ... on ContentfulImageSlideshow {
@@ -218,6 +226,7 @@ export const query = graphql`
               height
               width
             }
+            roundedCorners
           }
         }
       }
