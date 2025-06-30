@@ -30,7 +30,7 @@ const Index = ({ location, data }) => {
   }, [loading])
 
   useEffect(() => {
-    if (sessionStorage.getItem("intro")) {
+    if (localStorage.getItem("intro")) {
       setLoading(false)
     }
   }, [])
@@ -42,7 +42,7 @@ const Index = ({ location, data }) => {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      sessionStorage.setItem("intro", "true")
+      localStorage.setItem("intro", "true")
       setLoading(false)
     }, 2000)
     return () => {

@@ -14,12 +14,18 @@ const Journal = ({ location, data }) => {
   const [locationActiveButton, setLocationActiveButton] = useState()
   const [artistActiveButton, setArtistActiveButton] = useState()
 
-  const locations = data.allContentfulWorkshopEntry.nodes.map(
-    node => node.location
-  )
+  function onlyUnique(value, index, array) {
+    return array.indexOf(value) === index
+  }
+  
+  const locations = data.allContentfulWorkshopEntry.nodes
+    .map(node => node.location)
+    .filter(onlyUnique)
+
   const artists = data.allContentfulSupplementalContent.nodes
     .map(node => node.artist)
     .filter(item => item !== null)
+    .filter(onlyUnique)
 
   const contentFilter = (type, value, index) => {
     if (type === "location") {
@@ -89,44 +95,24 @@ const Journal = ({ location, data }) => {
       </Fade>
       <Fade triggerOnce={true}>
         <div>
-          {workshop.length > 1 ? (
-            <div className={styles.workshopHighlightsContainer}>
-              {workshop.map((entry, index) => (
-                <Link
-                  key={index}
-                  to={`/journal/${entry.slug}`}
-                  className={styles.multipleHighlightContainer}
-                >
-                  {entry.tileImage && (
-                    <GatsbyImage
-                      image={entry.tileImage.gatsbyImageData}
-                      alt={entry.tileImage.description}
-                      className={styles.multipleHighlightImage}
-                    ></GatsbyImage>
-                  )}
-                  <p>{entry.location}</p>
-                </Link>
-              ))}
-            </div>
-          ) : (
-            <div className={styles.workshopHighlight}>
-              <GatsbyImage
-                image={workshop[0].tileImage.gatsbyImageData}
-                alt={workshop[0].tileImage.description}
-                className={styles.highlightImage}
-              ></GatsbyImage>
-              <div className={styles.highlightText}>
-                <div
-                  dangerouslySetInnerHTML={{
-                    __html: workshop[0].introText.childMarkdownRemark.excerpt,
-                  }}
-                ></div>
-                <Link to={`/journal/${workshop[0].slug}`}>
-                  Read More &rarr;
-                </Link>
-              </div>
-            </div>
-          )}
+          <div className={styles.workshopHighlightsContainer}>
+            {workshop.map((entry, index) => (
+              <Link
+                key={index}
+                to={`/journal/${entry.slug}`}
+                className={styles.multipleHighlightContainer}
+              >
+                {entry.tileImage && (
+                  <GatsbyImage
+                    image={entry.tileImage.gatsbyImageData}
+                    alt={entry.tileImage.description}
+                    className={styles.multipleHighlightImage}
+                  ></GatsbyImage>
+                )}
+                <p>{entry.location}</p>
+              </Link>
+            ))}
+          </div>
         </div>
       </Fade>
       <div className={styles.supplementalContainer}>
