@@ -175,7 +175,10 @@ const Journal = ({ location, data }) => {
 
 export const query = graphql`
   query {
-    allContentfulWorkshopEntry(sort: { date: ASC }) {
+    allContentfulWorkshopEntry(
+      sort: { date: ASC }
+      filter: { title: { ne: "Placeholder (do not delete)" } }
+    ) {
       nodes {
         id
         location
