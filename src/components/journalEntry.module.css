@@ -81,9 +81,14 @@
 }
 
 .videoContainer {
-  border-radius: 20px;
   overflow: hidden;
   margin-bottom: 80px;
+}
+
+.heroVideo {
+  overflow: hidden;
+  width: 120%;
+  margin-left: -10%;
 }
 
 .relatedContainer {
@@ -94,6 +99,28 @@
 .related {
   font-weight: normal;
   font-size: calc(1rem + 1vw);
+  margin-bottom: 40px;
+}
+
+.supplementalContainer {
+  column-count: 4;
+}
+
+.supplementalTile {
+  display: flex;
+  flex-direction: column;
+  break-inside: avoid-column;
+  align-items: center;
+  gap: 10px;
+}
+
+.supplementalTile p {
+  margin-bottom: 0;
+  text-align: center;
+}
+
+.supplementalDisplay {
+  width: 100%;
 }
 
 @media screen and (max-width: 750px) {

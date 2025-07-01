@@ -16,6 +16,7 @@ const Workshop = ({ location, data }) => {
     content,
     date,
     tileImage,
+    heroContent,
   } = data.contentfulWorkshopEntry
   return (
     <>
@@ -25,11 +26,31 @@ const Workshop = ({ location, data }) => {
           <p className="center">{workshopLocation}</p>
         </Fade>
         <Fade triggerOnce={true}>
-          <GatsbyImage
-            image={tileImage.gatsbyImageData}
-            alt={tileImage.description}
-            className={styles.headerImage}
-          ></GatsbyImage>
+          {heroContent && heroContent.imageId ? (
+            <GatsbyImage
+              image={heroContent.image.gatsbyImageData}
+              alt={heroContent.image.description}
+              className={styles.headerImage}
+              style={{
+                borderRadius: heroContent.roundedCorners ? "20px" : "0px",
+              }}
+            ></GatsbyImage>
+          ) : (
+            <div
+              className={styles.heroVideo}
+              style={{
+                borderRadius: heroContent.roundedCorners ? "20px" : "0px",
+              }}
+              key={heroContent.videoId}
+            >
+              <VideoPlayer
+                video={heroContent}
+                videoId={heroContent.videoId}
+                activeVideo={activeVideo}
+                setActiveVideo={setActiveVideo}
+              ></VideoPlayer>
+            </div>
+          )}
         </Fade>
         <Fade triggerOnce={true}>
           <p className={`center ${styles.date}`}>
@@ -139,13 +160,39 @@ const Workshop = ({ location, data }) => {
         <div className={styles.relatedContainer}>
           <Fade triggerOnce={true}>
             <h2 className={styles.related}>Related</h2>
-            {relatedContent.map((item, index) => (
-              <Link
-                key={index}
-                className={styles.supplementalTile}
-                to={`/journal/${item.slug}`}
-              ></Link>
-            ))}
+            <div className={styles.supplementalContainer}>
+              {relatedContent.map((item, index) => (
+                <Link
+                  key={index}
+                  className={styles.supplementalTile}
+                  to={`/journal/${item.slug}`}
+                >
+                  {item.tileDisplay.imageDisplayId && (
+                    <GatsbyImage
+                      image={item.tileDisplay.image.gatsbyImageData}
+                      alt={item.tileDisplay.image.description}
+                      className={styles.supplementalDisplay}
+                      style={{
+                        borderRadius: item.tileDisplay.roundedCorners
+                          ? "20px"
+                          : "0px",
+                      }}
+                    ></GatsbyImage>
+                  )}
+                  {item.tileDisplay.textDisplayId && (
+                    <div
+                      dangerouslySetInnerHTML={{
+                        __html: item.tileDisplay.text.childMarkdownRemark.html,
+                      }}
+                      className={styles.tileDisplayText}
+                    ></div>
+                  )}
+                  <div>
+                    <p>{item.tileTitle}</p>
+                  </div>
+                </Link>
+              ))}
+            </div>
           </Fade>
         </div>
       )}
@@ -161,6 +208,31 @@ export const query = graphql`
       introText {
         childMarkdownRemark {
           html
+        }
+      }
+      heroContent {
+        ... on ContentfulImageModule {
+          imageId: id
+          caption {
+            childMarkdownRemark {
+              html
+            }
+          }
+          image {
+            description
+            gatsbyImageData
+          }
+          roundedCorners
+        }
+        ... on ContentfulVideoModule {
+          videoId: id
+          aspectRatio
+          posterImage {
+            description
+            gatsbyImageData
+          }
+          roundedCorners
+          videoLink
         }
       }
       content {
@@ -234,6 +306,21 @@ export const query = graphql`
       tileImage {
         description
         gatsbyImageData
+      }
+      relatedContent {
+        id
+        slug
+        tileDisplay {
+          ... on ContentfulImageModule {
+            imageDisplayId: id
+            image {
+              description
+              gatsbyImageData
+            }
+            roundedCorners
+          }
+        }
+        tileTitle
       }
     }
   }

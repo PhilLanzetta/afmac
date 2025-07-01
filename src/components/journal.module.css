@@ -10,6 +10,7 @@
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
+  margin-bottom: 40px;
 }
 
 .tagButton {
@@ -61,7 +62,7 @@
   justify-content: center;
   width: 100%;
   gap: 2%;
-  margin: 40px 0;
+  margin-bottom: 40px;
 }
 
 .multipleHighlightContainer {

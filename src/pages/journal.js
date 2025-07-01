@@ -11,54 +11,48 @@ const Journal = ({ location, data }) => {
   const [supplemental, setSupplemental] = useState(
     data.allContentfulSupplementalContent.nodes
   )
-  const [locationActiveButton, setLocationActiveButton] = useState()
-  const [artistActiveButton, setArtistActiveButton] = useState()
+
+  const [activeTagButton, setActiveTagButton] = useState()
+  const [isFiltered, setIsFiltered] = useState(false)
+
+  const tags = data.allContentfulTag.nodes
 
   function onlyUnique(value, index, array) {
     return array.indexOf(value) === index
   }
-  
-  const locations = data.allContentfulWorkshopEntry.nodes
-    .map(node => node.location)
-    .filter(onlyUnique)
 
-  const artists = data.allContentfulSupplementalContent.nodes
-    .map(node => node.artist)
-    .filter(item => item !== null)
-    .filter(onlyUnique)
-
-  const contentFilter = (type, value, index) => {
-    if (type === "location") {
-      if (locationActiveButton === index) {
-        setWorkshop(data.allContentfulWorkshopEntry.nodes)
-        setLocationActiveButton()
-      } else {
-        setLocationActiveButton(index)
-        setArtistActiveButton()
-        setWorkshop(
-          data.allContentfulWorkshopEntry.nodes.filter(
-            item => item.location === value
-          )
-        )
-        setSupplemental(data.allContentfulSupplementalContent.nodes)
-      }
+  const contentFilter = (tag, index) => {
+    if (activeTagButton === index) {
+      setWorkshop(data.allContentfulWorkshopEntry.nodes)
+      setActiveTagButton()
+      setIsFiltered(false)
     } else {
-      if (artistActiveButton === index) {
-        setSupplemental(data.allContentfulSupplementalContent.nodes)
-        setArtistActiveButton()
-      } else {
-        setArtistActiveButton(index)
-        setLocationActiveButton()
-        const artistFirst = data.allContentfulSupplementalContent.nodes.filter(
-          node => node.artist === value
-        )
-        const everythingElse =
-          data.allContentfulSupplementalContent.nodes.filter(
-            node => node.artist !== value
-          )
-        setSupplemental(artistFirst.concat(everythingElse))
-        setWorkshop(data.allContentfulWorkshopEntry.nodes)
-      }
+      setActiveTagButton(index)
+      setWorkshop(
+        data.allContentfulWorkshopEntry.nodes.reduce((acc, current) => {
+          if (
+            current.metadata?.tags.filter(
+              tagArray => tagArray.name === tag.name
+            ).length > 0
+          ) {
+            return [...acc, current]
+          }
+          return acc
+        }, [])
+      )
+      setSupplemental(
+        data.allContentfulSupplementalContent.nodes.reduce((acc, current) => {
+          if (
+            current.metadata?.tags.filter(
+              tagArray => tagArray.name === tag.name
+            ).length > 0
+          ) {
+            return [...acc, current]
+          }
+          return acc
+        }, [])
+      )
+      setIsFiltered(true)
     }
   }
 
@@ -69,92 +63,128 @@ const Journal = ({ location, data }) => {
       </Fade>
       <Fade triggerOnce={true}>
         <div className={styles.tagContainer}>
-          {locations.map((location, index) => (
+          {tags.map((tag, index) => (
             <button
               className={`${styles.tagButton} ${
-                locationActiveButton === index ? styles.activeTagButton : ""
+                activeTagButton === index ? styles.activeTagButton : ""
               }`}
               key={index}
-              onClick={() => contentFilter("location", location, index)}
+              onClick={() => contentFilter(tag, index)}
             >
-              {location}
-            </button>
-          ))}
-          {artists.map((artist, index) => (
-            <button
-              className={`${styles.tagButton} ${
-                artistActiveButton === index ? styles.activeTagButton : ""
-              }`}
-              key={index}
-              onClick={() => contentFilter("artist", artist, index)}
-            >
-              {artist}
+              {tag.name}
             </button>
           ))}
         </div>
       </Fade>
-      <Fade triggerOnce={true}>
-        <div>
-          <div className={styles.workshopHighlightsContainer}>
+      {isFiltered ? (
+        <Fade triggerOnce={true}>
+          <div className={styles.supplementalContainer}>
             {workshop.map((entry, index) => (
               <Link
                 key={index}
                 to={`/journal/${entry.slug}`}
-                className={styles.multipleHighlightContainer}
+                className={styles.supplementalTile}
               >
                 {entry.tileImage && (
                   <GatsbyImage
                     image={entry.tileImage.gatsbyImageData}
                     alt={entry.tileImage.description}
-                    className={styles.multipleHighlightImage}
+                    className={styles.supplementalDisplay}
                   ></GatsbyImage>
                 )}
-                <p>{entry.location}</p>
+                <p>{entry.tileTitle}</p>
               </Link>
             ))}
+            {supplemental.map((entry, index) => {
+              const image = entry.tileDisplay.imageDisplayId
+              const text = entry.tileDisplay.textDisplayId
+              return (
+                <Link
+                  key={index}
+                  className={styles.supplementalTile}
+                  to={`/journal/${entry.slug}`}
+                >
+                  {image && (
+                    <GatsbyImage
+                      image={entry.tileDisplay.image.gatsbyImageData}
+                      alt={entry.tileDisplay.image.description}
+                      className={styles.supplementalDisplay}
+                    ></GatsbyImage>
+                  )}
+                  {text && (
+                    <div
+                      dangerouslySetInnerHTML={{
+                        __html: entry.tileDisplay.text.childMarkdownRemark.html,
+                      }}
+                      className={styles.tileDisplayText}
+                    ></div>
+                  )}
+                  <div>
+                    <p>{entry.tileTitle}</p>
+                  </div>
+                </Link>
+              )
+            })}
           </div>
-        </div>
-      </Fade>
-      <div className={styles.supplementalContainer}>
-        {supplemental.map((entry, index) => {
-          const image = entry.tileDisplay.imageDisplayId
-          const text = entry.tileDisplay.textDisplayId
-          return (
-            <Link
-              key={index}
-              className={styles.supplementalTile}
-              to={`/journal/${entry.slug}`}
-            >
-              {image && (
-                <GatsbyImage
-                  image={entry.tileDisplay.image.gatsbyImageData}
-                  alt={entry.tileDisplay.image.description}
-                  className={styles.supplementalDisplay}
-                ></GatsbyImage>
-              )}
-              {text && (
-                <div
-                  dangerouslySetInnerHTML={{
-                    __html: entry.tileDisplay.text.childMarkdownRemark.html,
-                  }}
-                  className={styles.tileDisplayText}
-                ></div>
-              )}
-              <div>
-                <p>{entry.title}</p>
-                <p>
-                  {new Date(entry.date).toLocaleDateString("en-US", {
-                    month: "long",
-                    day: "numeric",
-                    year: "numeric",
-                    timeZone: "Europe/London",
-                  })}
-                </p>
+        </Fade>
+      ) : (
+        <>
+          <Fade triggerOnce={true}>
+            <div>
+              <div className={styles.workshopHighlightsContainer}>
+                {workshop.map((entry, index) => (
+                  <Link
+                    key={index}
+                    to={`/journal/${entry.slug}`}
+                    className={styles.multipleHighlightContainer}
+                  >
+                    {entry.tileImage && (
+                      <GatsbyImage
+                        image={entry.tileImage.gatsbyImageData}
+                        alt={entry.tileImage.description}
+                        className={styles.multipleHighlightImage}
+                      ></GatsbyImage>
+                    )}
+                    <p>{entry.tileTitle}</p>
+                  </Link>
+                ))}
               </div>
-            </Link>
-          )
-        })}
-      </div>
+            </div>
+          </Fade>
+          <div className={styles.supplementalContainer}>
+            {supplemental.map((entry, index) => {
+              const image = entry.tileDisplay.imageDisplayId
+              const text = entry.tileDisplay.textDisplayId
+              return (
+                <Link
+                  key={index}
+                  className={styles.supplementalTile}
+                  to={`/journal/${entry.slug}`}
+                >
+                  {image && (
+                    <GatsbyImage
+                      image={entry.tileDisplay.image.gatsbyImageData}
+                      alt={entry.tileDisplay.image.description}
+                      className={styles.supplementalDisplay}
+                    ></GatsbyImage>
+                  )}
+                  {text && (
+                    <div
+                      dangerouslySetInnerHTML={{
+                        __html: entry.tileDisplay.text.childMarkdownRemark.html,
+                      }}
+                      className={styles.tileDisplayText}
+                    ></div>
+                  )}
+                  <div>
+                    <p>{entry.tileTitle}</p>
+                  </div>
+                </Link>
+              )
+            })}
+          </div>
+        </>
+      )}
     </div>
   )
 }
@@ -172,6 +202,13 @@ export const query = graphql`
         tileImage {
           description
           gatsbyImageData(layout: FULL_WIDTH)
+        }
+        tileTitle
+        metadata {
+          tags {
+            id
+            name
+          }
         }
         introText {
           childMarkdownRemark {
@@ -194,8 +231,21 @@ export const query = graphql`
           }
         }
         date
+        tileTitle
         title
         artist
+        metadata {
+          tags {
+            id
+            name
+          }
+        }
+      }
+    }
+    allContentfulTag {
+      nodes {
+        id
+        name
       }
     }
   }
