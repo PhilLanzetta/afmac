@@ -296,7 +296,7 @@ export const query = graphql`
             }
             image {
               description
-              gatsbyImageData(width: 500)
+              gatsbyImageData
               height
               width
             }
@@ -317,7 +317,7 @@ export const query = graphql`
             imageDisplayId: id
             image {
               description
-              gatsbyImageData(width: 500)
+              gatsbyImageData
             }
             roundedCorners
           }
