@@ -24,6 +24,7 @@ const Journal = ({ location, data }) => {
   const contentFilter = (tag, index) => {
     if (activeTagButton === index) {
       setWorkshop(data.allContentfulWorkshopEntry.nodes)
+      setSupplemental(data.allContentfulSupplementalContent.nodes)
       setActiveTagButton()
       setIsFiltered(false)
     } else {

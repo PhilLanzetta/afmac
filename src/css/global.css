@@ -99,4 +99,9 @@ p {
   html {
     font-size: 14px;
   }
+
+  a:hover {
+    opacity: 1;
+    transition: all 400ms;
+  }
 }
