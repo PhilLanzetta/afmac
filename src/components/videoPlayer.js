@@ -223,7 +223,7 @@ const VideoPlayer = ({
               )}
             </motion.div>
           )}
-          {isMobile && !hasPlayed && (
+          {isMobile && !hasPlayed && !isHome && (
             <motion.button
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
