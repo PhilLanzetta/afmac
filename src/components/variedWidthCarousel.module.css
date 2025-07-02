@@ -18,6 +18,10 @@
   height: 100%;
 }
 
+.imageBorder {
+  border-radius: 20px;
+}
+
 .slideContainer figcaption {
   margin-top: 10px;
   font-family: var(--font-secondary);

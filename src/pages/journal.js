@@ -80,12 +80,12 @@ const Journal = ({ location, data }) => {
       </Fade>
       {isFiltered ? (
         <Fade triggerOnce={true}>
-          <div className={styles.supplementalContainer}>
+          <div className={styles.filterContainer}>
             {workshop.map((entry, index) => (
               <Link
                 key={index}
                 to={`/journal/${entry.slug}`}
-                className={styles.supplementalTile}
+                className={styles.filterFeatureTile}
               >
                 {entry.tileImage && (
                   <GatsbyImage

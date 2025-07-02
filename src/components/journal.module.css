@@ -80,6 +80,12 @@
   aspect-ratio: 1920 / 1283;
 }
 
+.filterContainer {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
 .supplementalContainer {
   column-count: 4;
 }
@@ -90,6 +96,15 @@
   break-inside: avoid-column;
   align-items: center;
   gap: 10px;
+}
+
+.filterFeatureTile {
+  display: flex;
+  flex-direction: column;
+  break-inside: avoid-column;
+  align-items: center;
+  gap: 10px;
+  grid-column: span 2;
 }
 
 .supplementalTile p {
@@ -142,5 +157,9 @@
   .workshopHighlightsContainer {
     gap: 40px;
     margin: 40px 0;
+  }
+
+  .filterContainer {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
