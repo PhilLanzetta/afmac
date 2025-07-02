@@ -93,7 +93,7 @@
 }
 
 .relatedContainer {
-  padding: 80px clamp(calc(10px + 1rem), 3vw, 500px);
+  padding: 80px clamp(10px, 3vw, 500px);
   font-family: "Sohne Kraftig", sans-serif;
 }
 
@@ -167,5 +167,9 @@
 
   .supplementalContainer {
     column-count: 2;
+  }
+
+  .relatedContainer {
+    padding-top: 0px;
   }
 }

@@ -2,7 +2,7 @@
   min-height: 100vh;
   background: #000;
   color: #fff;
-  padding: 180px clamp(calc(10px + 1rem), 3vw, 500px);
+  padding: 180px clamp(10px, 3vw, 500px);
   font-family: "Sohne Kraftig", sans-serif;
 }
 
@@ -69,13 +69,16 @@
 
 @media screen and (max-width: 750px) {
   .headline {
-    padding: 80px 0;
+    padding: 80px 0 40px 0;
     font-size: calc(1rem + 1vw);
+  }
+
+  .aboutMain {
+    padding-bottom: 0px;
   }
 
   .aboutText {
     margin: 40px 0;
-    margin-bottom: 120px;
   }
 
   .artistInfo {

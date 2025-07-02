@@ -1,6 +1,6 @@
 .footer {
   background: #000;
-  padding: clamp(calc(10px + 1rem), 3vw, 500px);
+  padding: clamp(10px, 3vw, 500px);
   color: #fff;
 }
 
