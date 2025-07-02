@@ -19,6 +19,7 @@ const Workshop = ({ location, data }) => {
     tileImage,
     heroContent,
   } = data.contentfulWorkshopEntry
+
   return (
     <>
       <div className={styles.journalMain}>
@@ -150,7 +151,7 @@ const Workshop = ({ location, data }) => {
             )
           } else if (item.slideshowId) {
             return (
-              <VariedWidthCarousel images={item.images}></VariedWidthCarousel>
+              <VariedWidthCarousel images={item.images} key={item.slideshowId}></VariedWidthCarousel>
             )
           } else {
             return <div>Unknown Content</div>

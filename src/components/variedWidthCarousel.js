@@ -2,6 +2,7 @@ import { GatsbyImage } from "gatsby-plugin-image"
 import React, { useState } from "react"
 import Slider from "react-slick"
 import * as styles from "./variedWidthCarousel.module.css"
+import useWindowSize from "../utils/useWindowSize"
 
 function NextArrow(props) {
   const { onClick } = props
@@ -65,6 +66,8 @@ function PrevArrow(props) {
 
 const VariedWidthCarousel = ({ images }) => {
   const [activeSlide, setActiveSlide] = useState(0)
+  const { height, width } = useWindowSize()
+  const isMobile = height > width
 
   const settings = {
     slidesToShow: 1,
@@ -86,14 +89,16 @@ const VariedWidthCarousel = ({ images }) => {
           {Math.round(activeSlide + 1)} / {images.length}
         </div>
       )}
-      <Slider {...settings} style={{ height: "50vh" }}>
+      <Slider {...settings} style={{ height: isMobile ? "20vh" : "50vh" }}>
         {images?.map(image => {
-          const imgWidth = (image.image?.width * 50) / image.image?.height
+          const imgWidth = isMobile
+            ? (image.image?.width * 20) / image.image?.height
+            : (image.image?.width * 50) / image.image?.height
           return (
             <div
               key={image.id}
               style={{
-                width: `calc(${imgWidth}vh + 20px)`
+                width: `calc(${imgWidth}vh + 20px)`,
               }}
               className={styles.slide}
             >
@@ -103,7 +108,7 @@ const VariedWidthCarousel = ({ images }) => {
                     image={image.image?.gatsbyImageData}
                     alt={image.image?.description}
                     style={{
-                      height: "50vh",
+                      height: isMobile ? "20vh" : "50vh",
                       width: `${imgWidth}vh`,
                     }}
                     className={image.roundedCorners ? styles.imageBorder : ""}
