@@ -75,6 +75,7 @@ const VariedWidthCarousel = ({ images }) => {
     infinite: true,
     centerMode: true,
     autoplay: true,
+    useTransform: false,
     dots: false,
     arrows: true,
     afterChange: current => setActiveSlide(current),
