@@ -10,7 +10,17 @@ module.exports = {
     siteUrl: `https://afmac.institute`,
   },
   plugins: [
-    `gatsby-plugin-image`,
+    {
+      resolve: `gatsby-plugin-sharp`,
+      options: {
+        defaults: {
+          formats: [`auto`, `webp`],
+          placeholder: `blurred`,
+          quality: 80,
+        },
+      },
+    },
+    ,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
