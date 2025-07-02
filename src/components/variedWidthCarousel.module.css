@@ -2,6 +2,8 @@
   position: relative;
   margin-left: clamp(-2000px, -20vw, calc((10px + 1rem) * -1));
   width: 100vw;
+  margin-top: 80px;
+  margin-bottom: 80px;
 }
 
 .slide {
@@ -31,7 +33,7 @@
 .nextArrow,
 .previousArrow {
   position: absolute;
-  top: -50px;
+  top: -40px;
   transform: translateY(-50%);
   height: 20px;
   width: 20px;
@@ -54,10 +56,16 @@
 
 .slideCount {
   position: absolute;
-  top: -50px;
+  top: -40px;
   transform: translateY(-50%);
   right: 43px;
   font-size: var(--caption);
+}
+
+@media screen and (max-width: 1100px) {
+  .previousArrow {
+    right: 110px;
+  }
 }
 
 @media screen and (max-width: 1000px) {
@@ -66,8 +74,16 @@
   .slideCount {
     top: -40px;
   }
+}
 
-  .slideCount {
-    right: 35px;
+@media screen and (max-width: 750px) {
+  .sliderContainer {
+    margin-left: -10px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
+
+  .previousArrow {
+    right: 100px;
   }
 }

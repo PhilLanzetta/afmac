@@ -68,8 +68,8 @@ const VariedWidthCarousel = ({ images }) => {
 
   const settings = {
     slidesToShow: 1,
+    slidesToScroll: 1,
     infinite: true,
-    useTransform: false,
     centerMode: true,
     autoplay: true,
     dots: false,
@@ -86,13 +86,15 @@ const VariedWidthCarousel = ({ images }) => {
           {Math.round(activeSlide + 1)} / {images.length}
         </div>
       )}
-      <Slider {...settings}>
+      <Slider {...settings} style={{ height: "50vh" }}>
         {images?.map(image => {
           const imgWidth = (image.image?.width * 50) / image.image?.height
           return (
             <div
               key={image.id}
-              style={{ width: `calc(${imgWidth}vh + 20px)` }}
+              style={{
+                width: `calc(${imgWidth}vh + 20px)`
+              }}
               className={styles.slide}
             >
               <div className={styles.slideContainer}>
@@ -100,7 +102,10 @@ const VariedWidthCarousel = ({ images }) => {
                   <GatsbyImage
                     image={image.image?.gatsbyImageData}
                     alt={image.image?.description}
-                    style={{ height: "50vh", width: `${imgWidth}vh` }}
+                    style={{
+                      height: "50vh",
+                      width: `${imgWidth}vh`,
+                    }}
                     className={image.roundedCorners ? styles.imageBorder : ""}
                   ></GatsbyImage>
                   <figcaption

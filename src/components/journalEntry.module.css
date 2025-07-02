@@ -1,6 +1,7 @@
 .journalMain {
   min-height: 100vh;
   padding: 180px clamp(calc(10px + 1rem), 20vw, 2000px);
+  padding-bottom: 20px;
   font-family: "Sohne Kraftig", sans-serif;
   background: #fff;
 }
@@ -125,7 +126,13 @@
 
 @media screen and (max-width: 750px) {
   .journalMain {
-    padding: 180px 10px;
+    padding: 180px 10px 20px 10px;
+  }
+
+  .heroVideo {
+    overflow: hidden;
+    width: 100%;
+    margin-left: 0px;
   }
 
   .textModule {
@@ -156,5 +163,9 @@
     width: 100%;
     margin-left: 0;
     margin-bottom: 40px;
+  }
+
+  .supplementalContainer {
+    column-count: 2;
   }
 }

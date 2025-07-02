@@ -50,6 +50,16 @@
   transform: translate(-50%, -50%);
 }
 
+.playOverlayDesktop {
+  position: absolute;
+  z-index: 20;
+  height: 60px;
+  width: 60px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 .overlayPlayBtn {
   height: 100%;
   width: 100%;
@@ -97,4 +107,10 @@
 .homeVideoSound svg {
   height: clamp(20px, 2vw, 30px);
   width: clamp(20px, 2vw, 30px);
+}
+
+@media screen and (max-width: 900px) {
+  .playOverlayDesktop {
+    display: none;
+  }
 }
