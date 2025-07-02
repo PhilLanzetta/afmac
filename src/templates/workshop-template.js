@@ -296,7 +296,7 @@ export const query = graphql`
             }
             image {
               description
-              gatsbyImageData
+              gatsbyImageData(width: 500)
               height
               width
             }
