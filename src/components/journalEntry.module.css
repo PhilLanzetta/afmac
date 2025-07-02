@@ -13,7 +13,6 @@
 
 .headerImage {
   margin-top: 20px;
-  border-radius: 20px;
 }
 
 .textModule {
@@ -41,7 +40,6 @@
 .imageModule {
   width: 120%;
   margin: 100px -10%;
-  border-radius: 20px;
 }
 
 .twoColumn {
@@ -52,15 +50,10 @@
   margin-bottom: 100px;
 }
 
-.twoColumnImage {
-  border-radius: 20px;
-}
-
 .imageModuleWithCaption {
   width: 120%;
   margin: 100px -10%;
   margin-bottom: 0;
-  border-radius: 20px;
 }
 
 .imageModuleCaption {
@@ -143,7 +136,6 @@
   .imageModule {
     width: 100%;
     margin: 40px 0;
-    border-radius: 20px;
   }
 
   .twoColumn {
@@ -156,7 +148,6 @@
     width: 100%;
     margin: 40px 0;
     margin-bottom: 0;
-    border-radius: 20px;
   }
 
   .imageModuleCaption {

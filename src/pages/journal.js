@@ -3,6 +3,7 @@ import { graphql, Link } from "gatsby"
 import { Fade } from "react-awesome-reveal"
 import * as styles from "../components/journal.module.css"
 import { GatsbyImage } from "gatsby-plugin-image"
+import Seo from "../components/seo"
 
 const Journal = ({ location, data }) => {
   const [workshop, setWorkshop] = useState(
@@ -251,5 +252,6 @@ export const query = graphql`
     }
   }
 `
+export const Head = () => <Seo title="Journal" />
 
 export default Journal

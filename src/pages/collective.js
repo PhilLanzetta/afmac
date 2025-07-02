@@ -157,8 +157,6 @@ const Collective = ({ location, data }) => {
   )
 }
 
-export const Head = () => <Seo title="Collective" />
-
 export const query = graphql`
   query {
     contentfulCollectivePage {
@@ -195,5 +193,7 @@ export const query = graphql`
     }
   }
 `
+
+export const Head = () => <Seo title="Collective" />
 
 export default Collective

@@ -4,6 +4,7 @@ import { Fade } from "react-awesome-reveal"
 import * as styles from "../components/journalEntry.module.css"
 import { GatsbyImage } from "gatsby-plugin-image"
 import VideoPlayer from "../components/videoPlayer"
+import Seo from "../components/seo"
 
 const Supplemental = ({ location, data }) => {
   const [activeVideo, setActiveVideo] = useState(null)
@@ -110,5 +111,6 @@ export const query = graphql`
     }
   }
 `
+export const Head = ({data}) => <Seo title={data.contentfulSupplementalContent.title} />
 
 export default Supplemental

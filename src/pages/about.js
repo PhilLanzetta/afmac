@@ -3,6 +3,7 @@ import { graphql } from "gatsby"
 import * as styles from "../components/about.module.css"
 import { GatsbyImage } from "gatsby-plugin-image"
 import { Fade } from "react-awesome-reveal"
+import Seo from "../components/seo"
 
 const About = ({ data, location }) => {
   const {
@@ -170,5 +171,7 @@ export const query = graphql`
     }
   }
 `
+
+export const Head = () => <Seo title="About" />
 
 export default About
