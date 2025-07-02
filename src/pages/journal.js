@@ -228,7 +228,7 @@ export const query = graphql`
             imageDisplayId: id
             image {
               description
-              gatsbyImageData
+              gatsbyImageData(width: 500)
             }
           }
         }
