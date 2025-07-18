@@ -155,8 +155,8 @@ const Journal = ({ location, data }) => {
           </Fade>
           <div className={styles.supplementalContainer}>
             {supplemental.map((entry, index) => {
-              const image = entry.tileDisplay.imageDisplayId
-              const text = entry.tileDisplay.textDisplayId
+              const image = entry.tileDisplay?.imageDisplayId
+              const text = entry.tileDisplay?.textDisplayId
               return (
                 <Link
                   key={index}

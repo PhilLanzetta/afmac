@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 import { Fade } from "react-awesome-reveal"
 import * as styles from "../components/journalEntry.module.css"
 import { GatsbyImage } from "gatsby-plugin-image"
@@ -8,7 +8,7 @@ import Seo from "../components/seo"
 
 const Supplemental = ({ location, data }) => {
   const [activeVideo, setActiveVideo] = useState(null)
-  const { title, supplementalLocation, content, date } =
+  const { title, supplementalLocation, content, date, relatedContent } =
     data.contentfulSupplementalContent
   return (
     <>
@@ -76,6 +76,54 @@ const Supplemental = ({ location, data }) => {
           }
         })}
       </div>
+      {relatedContent && (
+        <div className={styles.relatedContainer}>
+          <Fade triggerOnce={true}>
+            <h2 className={styles.related}>Related</h2>
+            <div className={styles.supplementalContainer}>
+              {relatedContent.map((item, index) => (
+                <Link
+                  key={index}
+                  className={styles.supplementalTile}
+                  to={`/journal/${item.slug}`}
+                >
+                  {item.tileDisplay?.imageDisplayId && (
+                    <GatsbyImage
+                      image={item.tileDisplay.image.gatsbyImageData}
+                      alt={item.tileDisplay.image.description}
+                      className={styles.supplementalDisplay}
+                      style={{
+                        borderRadius: "20px",
+                      }}
+                    ></GatsbyImage>
+                  )}
+                  {item.tileImage && (
+                    <GatsbyImage
+                      image={item.tileImage.gatsbyImageData}
+                      alt={item.tileImage.description}
+                      className={styles.supplementalDisplay}
+                      style={{
+                        borderRadius: "20px",
+                      }}
+                    ></GatsbyImage>
+                  )}
+                  {item.tileDisplay?.textDisplayId && (
+                    <div
+                      dangerouslySetInnerHTML={{
+                        __html: item.tileDisplay.text.childMarkdownRemark.html,
+                      }}
+                      className={styles.tileDisplayText}
+                    ></div>
+                  )}
+                  <div>
+                    <p>{item.tileTitle}</p>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </Fade>
+        </div>
+      )}
     </>
   )
 }
@@ -106,11 +154,49 @@ export const query = graphql`
             }
           }
         }
+        ... on ContentfulVideoModule {
+          videoId: id
+          aspectRatio
+          posterImage {
+            description
+            gatsbyImageData
+          }
+          videoLink
+          roundedCorners
+        }
       }
       date
+      relatedContent {
+        ... on ContentfulSupplementalContent {
+          id
+          slug
+          tileDisplay {
+            ... on ContentfulImageModule {
+              imageDisplayId: id
+              image {
+                description
+                gatsbyImageData
+              }
+              roundedCorners
+            }
+          }
+          tileTitle
+        }
+        ... on ContentfulWorkshopEntry {
+          id
+          slug
+          tileImage {
+            description
+            gatsbyImageData
+          }
+          tileTitle
+        }
+      }
     }
   }
 `
-export const Head = ({data}) => <Seo title={data.contentfulSupplementalContent.title} />
+export const Head = ({ data }) => (
+  <Seo title={data.contentfulSupplementalContent.title} />
+)
 
 export default Supplemental
