@@ -47,6 +47,7 @@ const Supplemental = ({ location, data }) => {
                       ? styles.imageModuleWithCaption
                       : styles.imageModule
                   }
+                  style={{ borderRadius: item.roundedCorners ? "20px" : "0px" }}
                   image={item.image.gatsbyImageData}
                   alt={item.image.description}
                 ></GatsbyImage>
@@ -145,6 +146,7 @@ export const query = graphql`
             description
             gatsbyImageData(layout: FULL_WIDTH)
           }
+          roundedCorners
         }
         ... on ContentfulTextModule {
           textId: id
