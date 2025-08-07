@@ -62,6 +62,33 @@ const Supplemental = ({ location, data }) => {
                 )}
               </Fade>
             )
+          } else if (item.twoColumnId) {
+            return (
+              <Fade triggerOnce={true} key={item.twoColumnId}>
+                <div className={styles.twoColumn}>
+                  {item.images.map(image => (
+                    <div key={image.id} className={styles.twoColumnImage}>
+                      <GatsbyImage
+                        image={image.image.gatsbyImageData}
+                        alt={image.image.description}
+                        className={styles.twoColumnImage}
+                        style={{
+                          borderRadius: item.roundedCorners ? "20px" : "0px",
+                        }}
+                      ></GatsbyImage>
+                      {image.caption && (
+                        <div
+                          dangerouslySetInnerHTML={{
+                            __html: image.caption.childMarkdownRemark.html,
+                          }}
+                          className={styles.twoColumnCaption}
+                        ></div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </Fade>
+            )
           } else if (item.videoId) {
             return (
               <div className={styles.videoContainer} key={item.videoId}>
@@ -162,6 +189,22 @@ export const query = graphql`
             childMarkdownRemark {
               html
             }
+          }
+        }
+        ... on ContentfulTwoColumnImage {
+          twoColumnId: id
+          images {
+            caption {
+              childMarkdownRemark {
+                html
+              }
+            }
+            id
+            image {
+              description
+              gatsbyImageData
+            }
+            roundedCorners
           }
         }
         ... on ContentfulImageSlideshow {
