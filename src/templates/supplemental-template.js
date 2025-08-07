@@ -4,6 +4,7 @@ import { Fade } from "react-awesome-reveal"
 import * as styles from "../components/journalEntry.module.css"
 import { GatsbyImage } from "gatsby-plugin-image"
 import VideoPlayer from "../components/videoPlayer"
+import VariedWidthCarousel from "../components/variedWidthCarousel"
 import Seo from "../components/seo"
 
 const Supplemental = ({ location, data }) => {
