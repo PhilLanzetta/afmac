@@ -73,7 +73,7 @@ a.footerLogo:hover {
   padding-left: 40px;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 1060px) {
   .footerContainer {
     flex-direction: column;
     padding: 20px;

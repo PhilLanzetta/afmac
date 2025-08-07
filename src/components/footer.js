@@ -11,6 +11,16 @@ const Footer = () => {
           Media Arts Collective
         </Link>
         <div className={styles.footerLinkContainer}>
+          <div>
+            <a
+              href="https://afmac.memberful.com"
+              target="_blank"
+              rel="noreferrer"
+              className={styles.footerUpper}
+            >
+              Participants
+            </a>
+          </div>
           <div className={styles.footerColumn}>
             <Link to="/about" className={styles.footerUpper}>
               About
