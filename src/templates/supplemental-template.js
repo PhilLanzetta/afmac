@@ -72,6 +72,13 @@ const Supplemental = ({ location, data }) => {
                 ></VideoPlayer>
               </div>
             )
+          } else if (item.slideshowId) {
+            return (
+              <VariedWidthCarousel
+                images={item.images}
+                key={item.slideshowId}
+              ></VariedWidthCarousel>
+            )
           } else {
             return <div>Unknown Content</div>
           }
@@ -154,6 +161,24 @@ export const query = graphql`
             childMarkdownRemark {
               html
             }
+          }
+        }
+        ... on ContentfulImageSlideshow {
+          slideshowId: id
+          images {
+            id
+            caption {
+              childMarkdownRemark {
+                html
+              }
+            }
+            image {
+              description
+              gatsbyImageData
+              height
+              width
+            }
+            roundedCorners
           }
         }
         ... on ContentfulVideoModule {
