@@ -191,6 +191,22 @@ export const query = graphql`
             }
           }
         }
+        ... on ContentfulTwoColumnImage {
+          twoColumnId: id
+          images {
+            caption {
+              childMarkdownRemark {
+                html
+              }
+            }
+            id
+            image {
+              description
+              gatsbyImageData
+            }
+            roundedCorners
+          }
+        }
         ... on ContentfulImageSlideshow {
           slideshowId: id
           images {
