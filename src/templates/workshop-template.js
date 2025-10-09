@@ -66,7 +66,7 @@ const Workshop = ({ location, data }) => {
         <Fade triggerOnce={true}>
           <div
             dangerouslySetInnerHTML={{
-              __html: introText.childMarkdownRemark.html,
+              __html: introText?.childMarkdownRemark?.html,
             }}
             className={styles.textModule}
           ></div>
@@ -151,7 +151,10 @@ const Workshop = ({ location, data }) => {
             )
           } else if (item.slideshowId) {
             return (
-              <VariedWidthCarousel images={item.images} key={item.slideshowId}></VariedWidthCarousel>
+              <VariedWidthCarousel
+                images={item.images}
+                key={item.slideshowId}
+              ></VariedWidthCarousel>
             )
           } else {
             return <div>Unknown Content</div>

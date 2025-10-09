@@ -4,6 +4,7 @@ import * as styles from "../components/about.module.css"
 import { GatsbyImage } from "gatsby-plugin-image"
 import { Fade } from "react-awesome-reveal"
 import Seo from "../components/seo"
+import slugify from "slugify"
 
 const About = ({ data, location }) => {
   const {
@@ -39,7 +40,10 @@ const About = ({ data, location }) => {
       </Fade>
       {leadership.map((artist, index) => (
         <Fade triggerOnce={true} key={index}>
-          <div className={styles.leaderCard}>
+          <div
+            className={styles.leaderCard}
+            id={`${slugify(artist.name, { lower: true })}`}
+          >
             <p className="heading">About {artist.name}</p>
             <div className={styles.artistInfo}>
               <GatsbyImage

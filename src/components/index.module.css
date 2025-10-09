@@ -1,9 +1,10 @@
 .indexMain {
   min-height: 100vh;
   background: #000;
-  padding: 180px clamp(calc(10px + 1rem), 3vw, 500px);
+  padding: 180px clamp(calc(10px + 1rem), 3vw, 500px) 40px
+    clamp(calc(10px + 1rem), 3vw, 500px);
   color: #fff;
-  font-family: "Sohne Kraftig", sans-serif;
+  font-family: 'Sohne Kraftig', sans-serif;
 }
 
 .homeVideo {
@@ -13,52 +14,82 @@
   overflow: hidden;
 }
 
-.workshopCard {
-  background: #fff;
-  color: #000;
-  padding: 40px;
+.aboutHeroText {
+  text-transform: uppercase;
+  margin-top: 200px;
+  margin-bottom: 200px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.aboutText {
+  width: 75%;
+  font-size: 2rem;
+  line-height: 1.15;
+  text-align: center;
+}
+
+.aboutBtn {
   border-radius: 20px;
+  border: 1px solid #fff;
+  padding: 10px 20px;
+}
+
+.workshopCard {
+  margin-top: 100px;
+  text-transform: uppercase;
+}
+
+.upcomingContainer,
+.journalContainer {
   margin-top: 100px;
 }
 
-.workshopInfoContainer {
-  display: flex;
-  margin-top: 40px;
-  gap: 20px;
-  font-family: "Sohne Kraftig", sans-serif;
-}
-
-.workshopInfoContainer > div {
-  width: 50%;
-}
-
-.readLink {
-  margin-top: 80px;
-  display: block;
-  text-transform: uppercase;
-  text-align: right;
+.table {
+  margin-top: 20px;
 }
 
 .table > div {
-  border-top: 1px solid #000;
+  border-top: 1px solid #fff;
 }
 
 .table > div:last-of-type {
-  border-bottom: 1px solid #000;
+  border-bottom: 1px solid #fff;
 }
 
 .row {
-  padding: 10px 0;
+  padding: 20px clamp(calc(10px + 1rem), 3vw, 500px);
   display: grid;
-  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-columns: 1fr 4fr 1fr;
+  align-items: center;
+  width: calc(100% + (clamp(calc(10px + 1rem), 3vw, 500px) * 2));
+  margin-left: calc(clamp(calc(10px + 1rem), 3vw, 500px) * -1);
 }
 
 .row p {
   margin-bottom: 0;
 }
 
-.date {
+.rowTitle {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.completed {
+  text-decoration: underline;
+}
+
+.status {
   text-align: right;
+  font-family: 'Druk', sans-serif;
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+  font-weight: normal;
 }
 
 .emailHeading {
@@ -85,7 +116,7 @@
   font-size: calc(1rem * 0.75);
 }
 
-.emailForm button[type="submit"] {
+.emailForm button[type='submit'] {
   position: absolute;
   right: 10px;
   cursor: pointer;
@@ -98,7 +129,7 @@
   border-width: 1px;
   border-style: solid;
   border-color: #000;
-  font-family: "Sohne Kraftig", sans-serif;
+  font-family: 'Sohne Kraftig', sans-serif;
   font-size: 1rem;
 }
 
@@ -111,6 +142,80 @@
 .emailForm input:-webkit-autofill:focus,
 .emailForm input:-webkit-autofill:active {
   -webkit-box-shadow: 0 0 0px 1000px white inset;
+}
+
+.upcomingGrid {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.upcomingImageContainer {
+  border-radius: 20px;
+  margin-bottom: 20px;
+  aspect-ratio: 2 / 1.25;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  overflow: hidden;
+}
+
+.upcomingDates {
+  font-size: 0.75rem;
+}
+
+.workshopsContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  row-gap: 40px;
+  margin-top: 20px;
+}
+
+.workshopImage {
+  width: 100%;
+  border-radius: 20px;
+  aspect-ratio: 1920 / 1283;
+  margin-bottom: 10px;
+}
+
+.collectiveHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 40px 0;
+  margin-bottom: 80px;
+  position: relative;
+}
+
+.collectiveHeader a {
+  position: relative;
+  z-index: 5;
+}
+
+.headerAnchor {
+  font-family: 'Druk', sans-serif;
+  text-transform: uppercase;
+  font-size: clamp(60px, calc(1rem + 4vw), 700px);
+  letter-spacing: 1px;
+  font-weight: normal;
+  position: relative;
+}
+
+.heroImage {
+  position: absolute;
+  top: 50%;
+  left: 65%;
+  transform: translateY(-50%);
+  width: 30%;
+  z-index: 1;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.dash {
+  display: block;
 }
 
 @media screen and (max-width: 800px) {
@@ -140,6 +245,45 @@
     width: 100%;
     margin: 60px 0;
     margin-top: 0;
+  }
+
+  .aboutText {
+    width: 100%;
+    font-size: 1.5rem;
+  }
+
+  .row {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: calc(100% + (clamp(calc(10px + 1rem), 3vw, 500px) * 4));
+    margin-left: calc(clamp(calc(10px + 1rem), 3vw, 500px) * -2);
+  }
+
+  .rowTitle {
+    flex-direction: column;
+    text-align: center;
+    gap: 0;
+    line-height: 1.15;
+  }
+
+  .dash {
+    display: none;
+  }
+
+  .upcomingGrid {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    row-gap: 40px;
+  }
+
+  .workshopsContainer {
+    grid-template-columns: 1fr;
+  }
+
+  .aboutHeroText {
+    margin-top: 100px;
+    margin-bottom: 100px;
   }
 }
 
