@@ -1216,6 +1216,13 @@ const Header = ({ journal }) => {
         >
           About
         </Link>
+        <Link
+          to="/shop"
+          className={styles.menuLink}
+          activeClassName={styles.activeLink}
+        >
+          Shop
+        </Link>
       </div>
     </header>
   )
