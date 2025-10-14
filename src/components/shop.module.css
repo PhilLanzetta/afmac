@@ -7,13 +7,13 @@
 }
 
 .shopHead {
- position: relative;
+  position: relative;
 }
 
 .shoppingBagContainer {
- position: absolute;
- right: 0;
- bottom: 0;
+  position: absolute;
+  right: 0;
+  bottom: 0;
 }
 
 .shoppingBag {
@@ -25,4 +25,54 @@
 .shoppingBag svg {
   height: 1.5rem;
   width: 1.5rem;
+}
+
+.productsContainer {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.productImageContainer {
+  background: #c0c0c0;
+  aspect-ratio: 1 / 1.25;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.productImage {
+  width: 100%;
+}
+
+.product {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.product p {
+  margin-bottom: 0;
+}
+
+.productTitle {
+  text-transform: uppercase;
+}
+
+.productInfo {
+  font-size: 0.75rem;
+}
+
+.addToCart, .sizeSelector {
+  padding: 5px;
+  border: 2px solid #fff;
+  border-radius: 7px;
+  font-size: 0.75rem;
+  background: #000;
+  color: #fff;
+}
+
+.sizeSelector:focus {
+  outline: none;
 }

@@ -2,10 +2,13 @@ import React, { useState } from "react"
 import { Fade } from "react-awesome-reveal"
 import * as styles from "../components/shop.module.css"
 import useStore from "../context/StoreContext"
+import { graphql } from "gatsby"
+import ProductTile from "../components/productTile"
 
-const Shop = () => {
+const Shop = ({ data }) => {
   const [isCartOpen, setIsCartOpen] = useState(false)
   const { cart } = useStore()
+  const products = data.allShopifyProduct.nodes
 
   return (
     <div className={styles.shopMain}>
@@ -45,8 +48,46 @@ const Shop = () => {
           </div>
         </div>
       </Fade>
+      <div className={styles.productsContainer}>
+        {products.map(item => (
+          <ProductTile key={item.id} item={item}></ProductTile>
+        ))}
+      </div>
     </div>
   )
 }
+
+export const query = graphql`
+  query {
+    allShopifyProduct {
+      nodes {
+        descriptionHtml
+        featuredImage {
+          localFile {
+            childImageSharp {
+              gatsbyImageData
+            }
+          }
+        }
+        id
+        priceRangeV2 {
+          minVariantPrice {
+            amount
+          }
+        }
+        variants {
+          shopifyId
+          selectedOptions {
+            name
+            value
+          }
+          inventoryQuantity
+        }
+        totalInventory
+        title
+      }
+    }
+  }
+`
 
 export default Shop
