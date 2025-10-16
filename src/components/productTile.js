@@ -26,7 +26,9 @@ const ProductTile = ({ item }) => {
               item.media[0]?.image?.localFile?.childImageSharp.gatsbyImageData
             }
             alt="product image"
-            className={hasSecondImage ? styles.productFirstImage : styles.productImage}
+            className={
+              hasSecondImage ? styles.productFirstImage : styles.productImage
+            }
           ></GatsbyImage>
           {hasSecondImage && (
             <GatsbyImage
@@ -39,7 +41,9 @@ const ProductTile = ({ item }) => {
           )}
         </div>
         <p className={styles.productTitle}>{item.title}</p>
-        <p>${item.priceRangeV2.minVariantPrice.amount}</p>
+        <p className={styles.productInfo}>
+          ${item.priceRangeV2.minVariantPrice.amount}
+        </p>
         <p
           className={styles.productInfo}
           dangerouslySetInnerHTML={{ __html: item.descriptionHtml }}
