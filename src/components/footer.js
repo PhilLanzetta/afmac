@@ -41,6 +41,13 @@ const Footer = () => {
             >
               Instagram
             </a>
+            <a
+              href="https://www.youtube.com/@A.F.M.A.C"
+              target="_blank"
+              rel="noreferrer"
+            >
+              YouTube
+            </a>
           </div>
           <div className={styles.footerColumn}>
             <a
