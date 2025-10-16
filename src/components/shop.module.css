@@ -76,7 +76,7 @@
 }
 
 .productSecondImage {
-  position: absolute;
+  position: absolute !important;
   opacity: 0;
 }
 
