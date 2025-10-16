@@ -23,6 +23,18 @@ const Shop = ({ data }) => {
         <div className={styles.shopHead}>
           <h1 className="heading center">Shop</h1>
           <div className={styles.shoppingBagContainer}>
+            <AnimatePresence>
+              {isCartOpen && (
+                <motion.button
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  onClick={() => setIsCartOpen(false)}
+                >
+                  X CLOSE
+                </motion.button>
+              )}
+            </AnimatePresence>
             <button
               onClick={() => setIsCartOpen(!isCartOpen)}
               className={styles.shoppingBag}

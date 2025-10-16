@@ -14,8 +14,11 @@
 
 .shoppingBagContainer {
   position: absolute;
-  right: 0;
+  left: 0;
   bottom: 0;
+  width: 100%;
+  display: flex;
+  font-size: 0.9rem;
 }
 
 .shoppingBag {
@@ -24,12 +27,16 @@
   align-items: flex-end;
   gap: 5px;
   cursor: pointer;
-  font-size: 0.9rem;
+  margin-left: auto;
 }
 
 .shoppingBag svg {
-  height: 1.25rem;
-  width: 1.25rem;
+  height: 1rem;
+  width: 1rem;
+}
+
+.shoppingBagContainer button {
+  cursor: pointer;
 }
 
 .productsContainer {
