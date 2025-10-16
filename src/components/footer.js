@@ -28,8 +28,9 @@ const Footer = () => {
           </div>
           <div className={styles.footerColumn}>
             <p className={styles.footerUpper}>Contact</p>
+            <a href="mailto:info@afmac.institute">Email</a>
             <a href="https://afmac.kit.com" target="_blank" rel="noreferrer">
-              Email
+              Stay Informed
             </a>
           </div>
           <div className={styles.footerColumn}>
