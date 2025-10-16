@@ -131,6 +131,11 @@
   margin-top: auto;
 }
 
+.addToCart:hover {
+  background: #fff;
+  color: #000;
+}
+
 .cartNumber {
   position: absolute;
   top: 0;
