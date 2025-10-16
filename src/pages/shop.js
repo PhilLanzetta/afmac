@@ -4,15 +4,20 @@ import * as styles from "../components/shop.module.css"
 import useStore from "../context/StoreContext"
 import { graphql } from "gatsby"
 import ProductTile from "../components/productTile"
+import CartProductRow from "../components/cartProductRow"
 
 const Shop = ({ data }) => {
   const [isCartOpen, setIsCartOpen] = useState(false)
-  const { cart } = useStore()
+  const { cart, checkout } = useStore()
+  const formattedNum = num =>
+    Number(num)
+      .toFixed(2)
+      .replace(/[.,]00$/, "")
   const products = data.allShopifyProduct.nodes
 
   return (
     <div className={styles.shopMain}>
-      <Fade triggerOnce={true}>
+      <Fade triggerOnce={true} className={styles.shopHeadContainer}>
         <div className={styles.shopHead}>
           <h1 className="heading center">Shop</h1>
           <div className={styles.shoppingBagContainer}>
@@ -22,7 +27,7 @@ const Shop = ({ data }) => {
             >
               <span>Cart</span>
               {cart.length > 0 && (
-                <span className="cart-number">
+                <span className={styles.cartNumber}>
                   {cart
                     .map(item => item.quantity)
                     .reduce((prev, next) => prev + next)}
@@ -46,13 +51,58 @@ const Shop = ({ data }) => {
               </svg>
             </button>
           </div>
+          {isCartOpen && (
+            <div className={styles.cartContainer}>
+              {cart.length > 0 && (
+                <div className={styles.cartHeader}>
+                  <div>Product</div>
+                  <div>Price</div>
+                  <div>Quantity</div>
+                  <div>Total</div>
+                </div>
+              )}
+              {cart.length > 0 ? (
+                cart.map((item, index) => (
+                  <CartProductRow key={index} item={item}></CartProductRow>
+                ))
+              ) : (
+                <div>Your cart is empty.</div>
+              )}
+              <article className={styles.cartSummary}>
+                <div className={styles.checkoutInfo}>
+                  <div>
+                    SUBTOTAL: $
+                    {checkout.totalPrice
+                      ? formattedNum(checkout.totalPrice?.amount)
+                      : 0}
+                  </div>
+                </div>
+                <div>TAXES AND SHIPPING CALCULATED AT CHECKOUT</div>
+                <button
+                  disabled={cart.length === 0}
+                  onClick={() => window.open(checkout.webUrl)}
+                  className={styles.checkoutBtn}
+                >
+                  PURCHASE
+                </button>
+              </article>
+            </div>
+          )}
         </div>
       </Fade>
+
       <div className={styles.productsContainer}>
         {products.map(item => (
           <ProductTile key={item.id} item={item}></ProductTile>
         ))}
       </div>
+      {isCartOpen && (
+        <button
+          aria-label="close cart"
+          onClick={() => setIsCartOpen(false)}
+          className={styles.clickToCloseCart}
+        ></button>
+      )}
     </div>
   )
 }
@@ -62,13 +112,6 @@ export const query = graphql`
     allShopifyProduct {
       nodes {
         descriptionHtml
-        featuredImage {
-          localFile {
-            childImageSharp {
-              gatsbyImageData
-            }
-          }
-        }
         id
         priceRangeV2 {
           minVariantPrice {
@@ -85,6 +128,18 @@ export const query = graphql`
         }
         totalInventory
         title
+        media {
+          ... on ShopifyMediaImage {
+            id
+            image {
+              localFile {
+                childImageSharp {
+                  gatsbyImageData
+                }
+              }
+            }
+          }
+        }
       }
     }
   }

@@ -15,16 +15,28 @@ const ProductTile = ({ item }) => {
     )
     .flat()
 
+  const hasSecondImage = item.media.length > 1
+
   return (
     <Fade triggerOnce={true}>
       <div className={styles.product}>
         <div className={styles.productImageContainer}>
           <GatsbyImage
             image={
-              item.featuredImage?.localFile?.childImageSharp.gatsbyImageData
+              item.media[0]?.image?.localFile?.childImageSharp.gatsbyImageData
             }
-            className={styles.productImage}
+            alt="product image"
+            className={hasSecondImage ? styles.productFirstImage : styles.productImage}
           ></GatsbyImage>
+          {hasSecondImage && (
+            <GatsbyImage
+              image={
+                item.media[1]?.image?.localFile?.childImageSharp.gatsbyImageData
+              }
+              alt="product image"
+              className={styles.productSecondImage}
+            ></GatsbyImage>
+          )}
         </div>
         <p className={styles.productTitle}>{item.title}</p>
         <p>${item.priceRangeV2.minVariantPrice.amount}</p>
@@ -35,16 +47,16 @@ const ProductTile = ({ item }) => {
         {item.totalInventory > 0 && (
           <>
             {sizes?.length > 0 && (
-                <select
-                  className={styles.sizeSelector}
-                  onChange={e => setVariantIndex(e.target.value * 1)}
-                >
-                  {sizes.map((size, index) => (
-                    <option key={index} value={index}>
-                      Size - {size.value}
-                    </option>
-                  ))}
-                </select>
+              <select
+                className={styles.sizeSelector}
+                onChange={e => setVariantIndex(e.target.value * 1)}
+              >
+                {sizes.map((size, index) => (
+                  <option key={index} value={index}>
+                    Size - {size.value}
+                  </option>
+                ))}
+              </select>
             )}
           </>
         )}
