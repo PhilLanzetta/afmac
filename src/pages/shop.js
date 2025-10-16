@@ -5,6 +5,8 @@ import useStore from "../context/StoreContext"
 import { graphql } from "gatsby"
 import ProductTile from "../components/productTile"
 import CartProductRow from "../components/cartProductRow"
+import { AnimatePresence, motion } from "framer-motion"
+import Seo from "../components/seo"
 
 const Shop = ({ data }) => {
   const [isCartOpen, setIsCartOpen] = useState(false)
@@ -51,43 +53,42 @@ const Shop = ({ data }) => {
               </svg>
             </button>
           </div>
-          {isCartOpen && (
-            <div className={styles.cartContainer}>
-              {cart.length > 0 && (
-                <div className={styles.cartHeader}>
-                  <div>Product</div>
-                  <div>Price</div>
-                  <div>Quantity</div>
-                  <div>Total</div>
-                </div>
-              )}
-              {cart.length > 0 ? (
-                cart.map((item, index) => (
-                  <CartProductRow key={index} item={item}></CartProductRow>
-                ))
-              ) : (
-                <div>Your cart is empty.</div>
-              )}
-              <article className={styles.cartSummary}>
-                <div className={styles.checkoutInfo}>
-                  <div>
-                    SUBTOTAL: $
-                    {checkout.totalPrice
-                      ? formattedNum(checkout.totalPrice?.amount)
-                      : 0}
+          <AnimatePresence>
+            {isCartOpen && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className={styles.cartContainer}
+              >
+                {cart.length > 0 ? (
+                  cart.map((item, index) => (
+                    <CartProductRow key={index} item={item}></CartProductRow>
+                  ))
+                ) : (
+                  <div>Your cart is empty.</div>
+                )}
+                <article className={styles.cartSummary}>
+                  <div className={styles.checkoutInfo}>
+                    <div>
+                      SUBTOTAL: $
+                      {checkout.totalPrice
+                        ? formattedNum(checkout.totalPrice?.amount)
+                        : 0}
+                    </div>
                   </div>
-                </div>
-                <div>TAXES AND SHIPPING CALCULATED AT CHECKOUT</div>
-                <button
-                  disabled={cart.length === 0}
-                  onClick={() => window.open(checkout.webUrl)}
-                  className={styles.checkoutBtn}
-                >
-                  PURCHASE
-                </button>
-              </article>
-            </div>
-          )}
+                  <div>TAXES AND SHIPPING CALCULATED AT CHECKOUT</div>
+                  <button
+                    disabled={cart.length === 0}
+                    onClick={() => window.open(checkout.webUrl)}
+                    className={styles.checkoutBtn}
+                  >
+                    PURCHASE
+                  </button>
+                </article>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </Fade>
 
@@ -144,5 +145,6 @@ export const query = graphql`
     }
   }
 `
+export const Head = () => <Seo title="Shop" />
 
 export default Shop

@@ -36,6 +36,7 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
+  row-gap: 60px;
 }
 
 .productImageContainer {
@@ -54,7 +55,7 @@
   align-items: center;
   justify-content: center;
   position: relative;
-  max-width: 200px;
+  max-width: 150px;
 }
 
 .productImageContainer:hover .productFirstImage {
@@ -151,14 +152,18 @@
   cursor: pointer;
 }
 
-.cartHeader {
-  display: grid;
-  grid-template-columns: 3fr 1fr 1fr 1fr;
+.cartHeading {
+  margin-bottom: 10px;
 }
 
 .cartRowContainer {
   display: grid;
-  grid-template-columns: 3fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+}
+
+.cartProductRight {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
 }
 
 .cartProductContainer {
@@ -194,4 +199,32 @@
   height: 100vh;
   width: 100vw;
   cursor: pointer;
+}
+
+@media screen and (max-width: 900px) {
+  .productsContainer {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .productsContainer {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media screen  and (max-width: 800px) {
+  .cartProductRight {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .cartRowContainer {
+    grid-template-columns: 2fr 1fr;
+  }
+
+  .cartProductContainer {
+    flex-direction: column;
+  }
 }
