@@ -26,7 +26,6 @@
   margin-top: 10px;
   font-family: var(--font-secondary);
   font-variant-numeric: normal;
-  font-size: var(--caption);
   padding-right: 20px;
 }
 
@@ -85,8 +84,8 @@
 @media screen and (max-width: 750px) {
   .sliderContainer {
     margin-left: -10px;
-    margin-top: 80px;
-    margin-bottom: 40px;
+    margin-top: 100px;
+    margin-bottom: 80px;
   }
 
   .previousArrow {
