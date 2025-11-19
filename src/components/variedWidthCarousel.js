@@ -121,6 +121,7 @@ const VariedWidthCarousel = ({ images }) => {
                         "<span class='fraction'><sup>$1</sup>&frasl;<sub>$2</sub></span>"
                       ),
                     }}
+                    className={styles.imageModuleCaption}
                   ></figcaption>
                 </figure>
               </div>

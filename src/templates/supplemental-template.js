@@ -73,7 +73,7 @@ const Supplemental = ({ location, data }) => {
                         alt={image.image.description}
                         className={styles.twoColumnImage}
                         style={{
-                          borderRadius: item.roundedCorners ? "20px" : "0px",
+                          borderRadius: image.roundedCorners ? "20px" : "0px",
                         }}
                       ></GatsbyImage>
                       {image.caption && (
@@ -91,14 +91,19 @@ const Supplemental = ({ location, data }) => {
             )
           } else if (item.videoId) {
             return (
-              <div className={styles.videoContainer} key={item.videoId}>
+              <Fade
+                triggerOnce={true}
+                className={styles.videoContainer}
+                style={{ borderRadius: item.roundedCorners ? "20px" : "0px" }}
+                key={item.videoId}
+              >
                 <VideoPlayer
                   video={item}
                   videoId={item.videoId}
                   activeVideo={activeVideo}
                   setActiveVideo={setActiveVideo}
                 ></VideoPlayer>
-              </div>
+              </Fade>
             )
           } else if (item.slideshowId) {
             return (
@@ -189,6 +194,22 @@ export const query = graphql`
             childMarkdownRemark {
               html
             }
+          }
+        }
+        ... on ContentfulTwoColumnImage {
+          twoColumnId: id
+          images {
+            caption {
+              childMarkdownRemark {
+                html
+              }
+            }
+            id
+            image {
+              description
+              gatsbyImageData
+            }
+            roundedCorners
           }
         }
         ... on ContentfulImageSlideshow {

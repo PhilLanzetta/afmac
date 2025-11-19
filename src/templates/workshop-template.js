@@ -133,7 +133,7 @@ const Workshop = ({ location, data }) => {
                         alt={image.image.description}
                         className={styles.twoColumnImage}
                         style={{
-                          borderRadius: item.roundedCorners ? "20px" : "0px",
+                          borderRadius: image.roundedCorners ? "20px" : "0px",
                         }}
                       ></GatsbyImage>
                       {image.caption && (
