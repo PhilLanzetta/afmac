@@ -6,6 +6,7 @@ import { GatsbyImage } from "gatsby-plugin-image"
 import VideoPlayer from "../components/videoPlayer"
 import VariedWidthCarousel from "../components/variedWidthCarousel"
 import Seo from "../components/seo"
+import useWindowSize from "../utils/useWindowSize"
 
 const Workshop = ({ location, data }) => {
   const [activeVideo, setActiveVideo] = useState(null)
@@ -19,6 +20,9 @@ const Workshop = ({ location, data }) => {
     tileImage,
     heroContent,
   } = data.contentfulWorkshopEntry
+
+  const { height, width } = useWindowSize()
+  const isMobile = width < 750
 
   return (
     <>
@@ -34,14 +38,22 @@ const Workshop = ({ location, data }) => {
               alt={heroContent.image.description}
               className={styles.headerImage}
               style={{
-                borderRadius: heroContent.roundedCorners ? "20px" : "0px",
+                borderRadius: heroContent.roundedCorners
+                  ? isMobile
+                    ? "10px"
+                    : "20px"
+                  : "0px",
               }}
             ></GatsbyImage>
           ) : (
             <div
               className={styles.heroVideo}
               style={{
-                borderRadius: heroContent.roundedCorners ? "20px" : "0px",
+                borderRadius: heroContent.roundedCorners
+                  ? isMobile
+                    ? "10px"
+                    : "20px"
+                  : "0px",
               }}
               key={heroContent.videoId}
             >
@@ -94,7 +106,13 @@ const Workshop = ({ location, data }) => {
                       ? styles.imageModuleWithCaption
                       : styles.imageModule
                   }
-                  style={{ borderRadius: item.roundedCorners ? "20px" : "0px" }}
+                  style={{
+                    borderRadius: item.roundedCorners
+                      ? isMobile
+                        ? "10px"
+                        : "20px"
+                      : "0px",
+                  }}
                   image={item.image.gatsbyImageData}
                   alt={item.image.description}
                 ></GatsbyImage>
@@ -113,7 +131,13 @@ const Workshop = ({ location, data }) => {
               <Fade
                 triggerOnce={true}
                 className={styles.videoContainer}
-                style={{ borderRadius: item.roundedCorners ? "20px" : "0px" }}
+                style={{
+                  borderRadius: item.roundedCorners
+                    ? isMobile
+                      ? "10px"
+                      : "20px"
+                    : "0px",
+                }}
                 key={item.videoId}
               >
                 <VideoPlayer
@@ -135,7 +159,11 @@ const Workshop = ({ location, data }) => {
                         alt={image.image.description}
                         className={styles.twoColumnImage}
                         style={{
-                          borderRadius: image.roundedCorners ? "20px" : "0px",
+                          borderRadius: image.roundedCorners
+                            ? isMobile
+                              ? "10px"
+                              : "20px"
+                            : "0px",
                         }}
                       ></GatsbyImage>
                       {image.caption && (
@@ -181,7 +209,9 @@ const Workshop = ({ location, data }) => {
                       className={styles.supplementalDisplay}
                       style={{
                         borderRadius: item.tileDisplay.roundedCorners
-                          ? "20px"
+                          ? isMobile
+                            ? "10px"
+                            : "20px"
                           : "0px",
                       }}
                     ></GatsbyImage>

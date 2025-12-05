@@ -90,10 +90,10 @@ const VariedWidthCarousel = ({ images }) => {
           {Math.round(activeSlide + 1)} / {images.length}
         </div>
       )}
-      <Slider {...settings} style={{ height: isMobile ? "20vh" : "50vh" }}>
+      <Slider {...settings} style={{ height: isMobile ? "50vh" : "50vh" }}>
         {images?.map(image => {
           const imgWidth = isMobile
-            ? (image.image?.width * 20) / image.image?.height
+            ? (image.image?.width * 50) / image.image?.height
             : (image.image?.width * 50) / image.image?.height
           return (
             <div
@@ -109,7 +109,7 @@ const VariedWidthCarousel = ({ images }) => {
                     image={image.image?.gatsbyImageData}
                     alt={image.image?.description}
                     style={{
-                      height: isMobile ? "20vh" : "50vh",
+                      height: isMobile ? "50vh" : "50vh",
                       width: `${imgWidth}vh`,
                     }}
                     className={image.roundedCorners ? styles.imageBorder : ""}

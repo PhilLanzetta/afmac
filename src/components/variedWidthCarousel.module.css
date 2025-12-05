@@ -91,4 +91,8 @@
   .previousArrow {
     right: 100px;
   }
+
+  .imageBorder {
+    border-radius: 10px;
+  }
 }

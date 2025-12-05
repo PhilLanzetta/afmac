@@ -6,11 +6,16 @@ import { GatsbyImage } from "gatsby-plugin-image"
 import VideoPlayer from "../components/videoPlayer"
 import VariedWidthCarousel from "../components/variedWidthCarousel"
 import Seo from "../components/seo"
+import useWindowSize from "../utils/useWindowSize"
 
 const Supplemental = ({ location, data }) => {
   const [activeVideo, setActiveVideo] = useState(null)
   const { title, supplementalLocation, content, date, relatedContent } =
     data.contentfulSupplementalContent
+
+  const { height, width } = useWindowSize()
+  const isMobile = width < 750
+
   return (
     <>
       <div className={styles.journalMain}>
@@ -50,7 +55,13 @@ const Supplemental = ({ location, data }) => {
                       ? styles.imageModuleWithCaption
                       : styles.imageModule
                   }
-                  style={{ borderRadius: item.roundedCorners ? "20px" : "0px" }}
+                  style={{
+                    borderRadius: item.roundedCorners
+                      ? isMobile
+                        ? "10px"
+                        : "20px"
+                      : "0px",
+                  }}
                   image={item.image.gatsbyImageData}
                   alt={item.image.description}
                 ></GatsbyImage>
@@ -75,7 +86,11 @@ const Supplemental = ({ location, data }) => {
                         alt={image.image.description}
                         className={styles.twoColumnImage}
                         style={{
-                          borderRadius: image.roundedCorners ? "20px" : "0px",
+                          borderRadius: item.roundedCorners
+                            ? isMobile
+                              ? "10px"
+                              : "20px"
+                            : "0px",
                         }}
                       ></GatsbyImage>
                       {image.caption && (
@@ -96,7 +111,13 @@ const Supplemental = ({ location, data }) => {
               <Fade
                 triggerOnce={true}
                 className={styles.videoContainer}
-                style={{ borderRadius: item.roundedCorners ? "20px" : "0px" }}
+                style={{
+                  borderRadius: item.roundedCorners
+                    ? isMobile
+                      ? "10px"
+                      : "20px"
+                    : "0px",
+                }}
                 key={item.videoId}
               >
                 <VideoPlayer
@@ -136,7 +157,7 @@ const Supplemental = ({ location, data }) => {
                       alt={item.tileDisplay.image.description}
                       className={styles.supplementalDisplay}
                       style={{
-                        borderRadius: "20px",
+                        borderRadius: isMobile ? "10px" : "20px",
                       }}
                     ></GatsbyImage>
                   )}
@@ -146,7 +167,7 @@ const Supplemental = ({ location, data }) => {
                       alt={item.tileImage.description}
                       className={styles.supplementalDisplay}
                       style={{
-                        borderRadius: "20px",
+                        borderRadius: isMobile ? "10px" : "20px",
                       }}
                     ></GatsbyImage>
                   )}
