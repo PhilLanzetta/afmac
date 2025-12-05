@@ -76,7 +76,9 @@ const Workshop = ({ location, data }) => {
             return (
               <Fade triggerOnce={true} key={item.textId}>
                 <div
-                  className={styles.textModule}
+                  className={`${styles.textModule} ${
+                    item.creditText ? styles.creditText : ""
+                  }`}
                   dangerouslySetInnerHTML={{
                     __html: item.text.childMarkdownRemark.html,
                   }}
@@ -266,6 +268,7 @@ export const query = graphql`
         }
         ... on ContentfulTextModule {
           textId: id
+          creditText
           text {
             childMarkdownRemark {
               html

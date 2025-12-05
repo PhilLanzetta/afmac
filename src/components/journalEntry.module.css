@@ -42,6 +42,10 @@
   margin: 100px -10%;
 }
 
+.creditText {
+  font-size: 0.6rem;
+}
+
 .twoColumn {
   display: flex;
   width: 120%;
@@ -106,6 +110,7 @@
   break-inside: avoid-column;
   align-items: center;
   gap: 10px;
+  margin-bottom: 10px;
 }
 
 .supplementalTile p {
