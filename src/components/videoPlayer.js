@@ -58,6 +58,7 @@ const VideoPlayer = ({
 
   const playPauseHandler = () => {
     //plays and pause the video (toggling)
+    setHasPlayed(true)
     setVideoState({ ...videoState, playing: !videoState.playing })
     setActiveVideo(videoId)
   }
