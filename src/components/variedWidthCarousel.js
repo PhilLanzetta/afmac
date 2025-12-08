@@ -83,6 +83,21 @@ const VariedWidthCarousel = ({ images }) => {
     nextArrow: <NextArrow addClassName={styles.nextArrow} />,
     prevArrow: <PrevArrow addClassName={styles.previousArrow} />,
   }
+
+  const mobileSettings = {
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    infinite: true,
+    centerMode: true,
+    autoplay: true,
+    useTransform: false,
+    dots: false,
+    arrows: true,
+    afterChange: current => setActiveSlide(current),
+    nextArrow: <NextArrow addClassName={styles.nextArrow} />,
+    prevArrow: <PrevArrow addClassName={styles.previousArrow} />,
+  }
+
   return (
     <div className={styles.sliderContainer}>
       {images?.length > 1 && (
@@ -90,45 +105,75 @@ const VariedWidthCarousel = ({ images }) => {
           {Math.round(activeSlide + 1)} / {images.length}
         </div>
       )}
-      <Slider {...settings} style={{ height: isMobile ? "50vh" : "50vh" }}>
-        {images?.map(image => {
-          const imgWidth = isMobile
-            ? (image.image?.width * 50) / image.image?.height
-            : (image.image?.width * 50) / image.image?.height
-          return (
-            <div
-              key={image.id}
-              style={{
-                width: `calc(${imgWidth}vh + 20px)`,
-              }}
-              className={styles.slide}
-            >
-              <div className={styles.slideContainer}>
-                <figure>
-                  <GatsbyImage
-                    image={image.image?.gatsbyImageData}
-                    alt={image.image?.description}
-                    style={{
-                      height: isMobile ? "50vh" : "50vh",
-                      width: `${imgWidth}vh`,
-                    }}
-                    className={image.roundedCorners ? styles.imageBorder : ""}
-                  ></GatsbyImage>
-                  <figcaption
-                    dangerouslySetInnerHTML={{
-                      __html: image.caption?.childMarkdownRemark.html.replace(
-                        /\b(\d+)\/(\d+)/g,
-                        "<span class='fraction'><sup>$1</sup>&frasl;<sub>$2</sub></span>"
-                      ),
-                    }}
-                    className={styles.imageModuleCaption}
-                  ></figcaption>
-                </figure>
+      {isMobile ? (
+        <Slider {...mobileSettings}>
+          {images?.map(image => {
+            return (
+              <div key={image.id} className={styles.slide}>
+                <div
+                  className={styles.slideContainer}
+                  style={{ marginRight: "10px" }}
+                >
+                  <figure>
+                    <GatsbyImage
+                      image={image.image?.gatsbyImageData}
+                      alt={image.image?.description}
+                      className={image.roundedCorners ? styles.imageBorder : ""}
+                    ></GatsbyImage>
+                    <figcaption
+                      dangerouslySetInnerHTML={{
+                        __html: image.caption?.childMarkdownRemark.html.replace(
+                          /\b(\d+)\/(\d+)/g,
+                          "<span class='fraction'><sup>$1</sup>&frasl;<sub>$2</sub></span>"
+                        ),
+                      }}
+                      className={styles.imageModuleCaption}
+                    ></figcaption>
+                  </figure>
+                </div>
               </div>
-            </div>
-          )
-        })}
-      </Slider>
+            )
+          })}
+        </Slider>
+      ) : (
+        <Slider {...settings} style={{ height: "50vh" }}>
+          {images?.map(image => {
+            const imgWidth = (image.image?.width * 50) / image.image?.height
+            return (
+              <div
+                key={image.id}
+                style={{
+                  width: `calc(${imgWidth}vh + 20px)`,
+                }}
+                className={styles.slide}
+              >
+                <div className={styles.slideContainer}>
+                  <figure>
+                    <GatsbyImage
+                      image={image.image?.gatsbyImageData}
+                      alt={image.image?.description}
+                      style={{
+                        height: "50vh",
+                        width: `${imgWidth}vh`,
+                      }}
+                      className={image.roundedCorners ? styles.imageBorder : ""}
+                    ></GatsbyImage>
+                    <figcaption
+                      dangerouslySetInnerHTML={{
+                        __html: image.caption?.childMarkdownRemark.html.replace(
+                          /\b(\d+)\/(\d+)/g,
+                          "<span class='fraction'><sup>$1</sup>&frasl;<sub>$2</sub></span>"
+                        ),
+                      }}
+                      className={styles.imageModuleCaption}
+                    ></figcaption>
+                  </figure>
+                </div>
+              </div>
+            )
+          })}
+        </Slider>
+      )}
     </div>
   )
 }
