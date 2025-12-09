@@ -32,7 +32,7 @@ const Workshop = ({ location, data }) => {
           <p className="center">{workshopLocation}</p>
         </Fade>
         <Fade triggerOnce={true}>
-          <p className="center">
+          <p className={`center ${styles.date}`}>
             {new Date(date).toLocaleDateString("en-US", {
               month: "long",
               year: "numeric",
