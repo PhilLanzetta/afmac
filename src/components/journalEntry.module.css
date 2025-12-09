@@ -6,13 +6,13 @@
   background: #fff;
 }
 
-.date {
-  margin-top: 20px;
-  margin-bottom: 80px;
+.workshopTitle {
+  margin-bottom: 10px;
 }
 
 .headerImage {
   margin-top: 20px;
+  margin-bottom: 80px;
 }
 
 .textModule {
@@ -87,6 +87,7 @@
   overflow: hidden;
   width: 120%;
   margin-left: -10%;
+  margin-bottom: 80px;
 }
 
 .relatedContainer {

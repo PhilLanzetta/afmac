@@ -28,8 +28,17 @@ const Workshop = ({ location, data }) => {
     <>
       <div className={styles.journalMain}>
         <Fade triggerOnce={true}>
-          <h1 className="heading center">{title}</h1>
+          <h1 className={`heading center ${styles.workshopTitle}`}>{title}</h1>
           <p className="center">{workshopLocation}</p>
+        </Fade>
+        <Fade triggerOnce={true}>
+          <p className="center">
+            {new Date(date).toLocaleDateString("en-US", {
+              month: "long",
+              year: "numeric",
+              timeZone: "Europe/London",
+            })}
+          </p>
         </Fade>
         <Fade triggerOnce={true}>
           {heroContent && heroContent.imageId ? (
@@ -65,15 +74,6 @@ const Workshop = ({ location, data }) => {
               ></VideoPlayer>
             </div>
           )}
-        </Fade>
-        <Fade triggerOnce={true}>
-          <p className={`center ${styles.date}`}>
-            {new Date(date).toLocaleDateString("en-US", {
-              month: "long",
-              year: "numeric",
-              timeZone: "Europe/London",
-            })}
-          </p>
         </Fade>
         <Fade triggerOnce={true}>
           <div
